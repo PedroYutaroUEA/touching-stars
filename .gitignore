@@ -1,3 +1,13 @@
 # Godot 4+ specific ignores
 .godot/
 /android/
+# Custom ignores
+.notes/
+.agents/
+AGENTS.md
+CONTEXT.md
+TREE.md
+ACTIVE_TASK.md
+SOP.md
+PROGRESS.md
+BOOTSTRAP.md
