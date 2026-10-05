@@ -1,0 +1,77 @@
+[gd_scene format=3 uid="uid://d1g0b2k5naq80"]
+
+[ext_resource type="Script" uid="uid://b4i8lu3dxq1b" path="res://scripts/base_level.gd" id="1_blvl"]
+[ext_resource type="Texture2D" uid="uid://cd13fw1tcr0ju" path="res://sprites/tilesets/tileset_base.svg" id="2_dbkse"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0n1tn"]
+texture = ExtResource("2_dbkse")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:1/0 = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:2/0 = 0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:2/0 = 0
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:2/0 = 0
+2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSet" id="TileSet_a8ku5"]
+physics_layer_0/collision_layer = 1
+terrain_set_0/mode = 0
+terrain_set_0/terrain_0/name = "lunar_surface"
+terrain_set_0/terrain_0/color = Color(0.7019608, 0.7254902, 0.7019608, 1)
+sources/2 = SubResource("TileSetAtlasSource_0n1tn")
+
+[sub_resource type="TileSet" id="TileSet_eu64u"]
+physics_layer_0/collision_layer = 1
+
+[node name="BaseLevel" type="Node2D" unique_id=2007538441]
+script = ExtResource("1_blvl")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1098642297]
+tile_set = SubResource("TileSet_a8ku5")
+
+[node name="TileMap" type="TileMap" parent="." unique_id=680138006]
+tile_set = SubResource("TileSet_eu64u")
+format = 2
+
+[node name="SpawnPoint" type="Marker2D" parent="." unique_id=1692913305]
+position = Vector2(640, 360)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1376507925]
+position = Vector2(640, 360)
+
+[node name="BackgroundLayer" type="CanvasLayer" parent="." unique_id=1757101272]
+layer = -1
+
+[node name="ColorRect" type="ColorRect" parent="BackgroundLayer" unique_id=2139932891]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.05, 0.05, 0.08, 1)
+
+[node name="UILayer" type="CanvasLayer" parent="." unique_id=185168009]
+
+[node name="LevelClearLabel" type="Label" parent="UILayer" unique_id=550781968]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 48
+text = "LEVEL CLEAR!
+Pressione PULO (Espaço/W) para continuar"
+horizontal_alignment = 1
+vertical_alignment = 1

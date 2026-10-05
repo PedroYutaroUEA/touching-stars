@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+  <rect width="16" height="16" fill="none"/>
+  <!-- Cauda do Cometa -->
+  <polygon points="2,14 6,10 2,8" fill="#FF9800"/>
+  <polygon points="4,16 8,12 10,14" fill="#FFC107"/>
+  <!-- Núcleo -->
+  <circle cx="10" cy="6" r="4" fill="#FFEB3B"/>
+</svg>
