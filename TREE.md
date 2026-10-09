@@ -5,10 +5,11 @@ C:.
 �   .gitignore
 �   ACTIVE_TASK.md
 �   AGENTS.md
+�   BOOTSTRAP.md
 �   CONTEXT.md
 �   icon.svg
 �   icon.svg.import
-�   owo.txt
+�   PROGRESS.md
 �   project.godot
 �   README.md
 �   SOP.md
@@ -21,6 +22,8 @@ C:.
 �   �   uid_cache.bin
 �   �   
 �   +---editor
+�   �       base_level.tscn-editstate-8fc352315ec21af922be86c6d558dec7.cfg
+�   �       base_level.tscn-folding-8fc352315ec21af922be86c6d558dec7.cfg
 �   �       create_recent.Node
 �   �       editor_layout.cfg
 �   �       editor_script_doc_cache.res
@@ -38,8 +41,14 @@ C:.
 �   �       script_editor_cache.cfg
 �   �       
 �   +---imported
+�   �       alien.svg-0d33f9762d34f37d7cf6a32e56803549.ctex
+�   �       alien.svg-0d33f9762d34f37d7cf6a32e56803549.md5
+�   �       comet.svg-e0b837f2bda0c00cb2d0f28b978ad6e6.ctex
+�   �       comet.svg-e0b837f2bda0c00cb2d0f28b978ad6e6.md5
 �   �       icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex
 �   �       icon.svg-218a8f2b3041327d8a5756f3a245f83b.md5
+�   �       tileset_base.svg-2759995b8815df0e49e5b34fbfc280c8.ctex
+�   �       tileset_base.svg-2759995b8815df0e49e5b34fbfc280c8.md5
 �   �       
 �   +---shader_cache
 �       +---BlitShaderRD
@@ -68,6 +77,7 @@ C:.
 �       �           89e0c5a264d1558e7bc2ca0dc3d0afd834fbe7b6.d3d12.cache
 �       �           8f9335de72e837eeead40640cc01fddc5baf5a7c.d3d12.cache
 �       �           b7f8864ed1b8040a3456125a335ae926e257bf47.d3d12.cache
+�       �           bf1adcfe745b8b373e2d38fa2ed979642b0f9b3f.d3d12.cache
 �       �           c2f7efc3419efdd79fabd056897820a83f2ac2c9.d3d12.cache
 �       �           ddf1c2fb49f2d96e42d4ffa10cbbb808b4b14063.d3d12.cache
 �       �           
@@ -188,17 +198,44 @@ C:.
 +---.notes
 �       00-gemini-new-fase-ideas.txt
 �       01-gemini-architecture-planning.txt
+�       02-restore-ctx-and-implements-tile.txt
 �       
++---audio
+�   +---music
+�   +---sfx
 +---entities
+�       comet.tscn
+�       hazard.tscn
 �       player.tscn
 �       
 +---scenes
+�       audio_manager.tscn
+�       base_level.tscn
 �       game.tscn
 �       
 +---scripts
+�       audio_manager.gd
+�       audio_manager.gd.uid
+�       base_level.gd
+�       base_level.gd.uid
+�       comet.gd
+�       comet.gd.uid
+�       hazard.gd
+�       hazard.gd.uid
 �       player.gd
 �       player.gd.uid
 �       
 +---sprites
 �   +---player
+�   �       alien.svg
+�   �       alien.svg.import
+�   �       
+�   +---target
+�   �       comet.svg
+�   �       comet.svg.import
+�   �       
+�   +---tilesets
+�           tileset_base.svg
+�           tileset_base.svg.import
+�           
 +---tiles

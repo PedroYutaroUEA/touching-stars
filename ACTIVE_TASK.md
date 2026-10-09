@@ -1,10 +1,10 @@
 # ACTIVE TASK
 
-## Current Phase: Phase 1 (Core Foundation) - Block 1
-- [x] Configure Viewport and Screen Resolution in `project.godot` (1280x720, `canvas_items`, `keep`).
-- [x] Configure Input mappings (`move_left`, `move_right`, `jump`, `restart`).
-- [x] Configure nominal Physics Layers in `project.godot`.
-- [x] Implement `res://entities/player.tscn` and `res://scripts/player.gd` (fluid movement, coyote time, and jump buffering).
-- [x] Create `res://scenes/base_level.tscn` and `res://scripts/base_level.gd` (spawn logic, death-on-collision, and comet arrival).
-- [x] Implement the `Comet` entity (`res://entities/comet.tscn`) with particle emission and touch signal.
-- [x] Implement the base spike/lava hazard using a typed `Area2D`.
+## Current Phase: Phase 2 - Level Design (Fundamentals and Gravity/Physics)
+### Block 2: Levels 01 to 06
+- [ ] Level 01: The floor is lava (Deadly lava floor; fixed platforms)
+- [ ] Level 02: Moon gravity (Reduced gravity (40%); floaty jumps)
+- [ ] Level 03: Moving platforms (Platforms moving along X and Y axes)
+- [ ] Level 04: Floor is ice (Zero floor friction; inertial sliding)
+- [ ] Level 05: Spikes everywhere (Fixed spikes on primary paths)
+- [ ] Level 06: Saturn gravity (Heavy gravity (250%); extremely short jumps)
