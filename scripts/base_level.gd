@@ -1,6 +1,8 @@
 class_name BaseLevel
 extends Node2D
 
+@export var level_gravity_multiplier: float = 1.0
+
 @onready var spawn_point: Marker2D = $SpawnPoint
 @onready var comet_point: Marker2D = $CometPoint
 @onready var ui_layer: CanvasLayer = $UILayer
@@ -29,6 +31,7 @@ func _spawn_comet() -> void:
 
 func _spawn_player() -> void:
 	_player_instance = _player_scene.instantiate() as Player
+	_player_instance.gravity_multiplier = level_gravity_multiplier
 	_player_instance.global_position = spawn_point.global_position
 	# Connect death signal
 	_player_instance.player_died.connect(_on_player_died)

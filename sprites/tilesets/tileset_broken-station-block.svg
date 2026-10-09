@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+  <rect width="16" height="16" fill="none"/>
+  
+  <!-- Bloco de metal principal (13 pixels de altura para sobrar espaço pros fios) -->
+  <rect x="0" y="0" width="16" height="13" fill="#455A64"/>
+  <rect x="1" y="1" width="14" height="11" fill="none" stroke="#78909C" stroke-width="1"/>
+  
+  <!-- Linhas de painel industrial -->
+  <line x1="0" y1="6" x2="16" y2="6" stroke="#263238" stroke-width="1"/>
+  <line x1="8" y1="0" x2="8" y2="6" stroke="#263238" stroke-width="1"/>
+  
+  <!-- Faixas de perigo (Hazard stripes) -->
+  <polygon points="12,7 16,7 16,11 8,11" fill="#FFC107"/>
+  <polygon points="4,7 8,7 4,11 0,11" fill="#FFC107"/>
+  
+  <!-- Fios e cabos arrancados pendurados na base -->
+  <path d="M2,13 v3 M6,13 v2 M10,13 v3 M14,13 v2" stroke="#FF5252" stroke-width="1"/>
+  <path d="M4,13 v2 M8,13 v3 M12,13 v1" stroke="#2196F3" stroke-width="1"/>
+  <path d="M3,13 l1,2 M11,13 l-1,2" stroke="#FFEB3B" stroke-width="1"/>
+</svg>

@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+  <defs>
+    <linearGradient id="lavaGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FFEB3B" />
+      <stop offset="30%" stop-color="#FF9800" />
+      <stop offset="100%" stop-color="#D84315" />
+    </linearGradient>
+  </defs>
+  <!-- Corpo da lava -->
+  <rect width="16" height="16" fill="url(#lavaGrad)"/>
+  
+  <!-- Crosta incandescente no topo -->
+  <path d="M0,0 Q4,2 8,0 T16,0 L16,2 L0,2 Z" fill="#FFF9C4" opacity="0.8"/>
+  
+  <!-- Bolhas flutuando -->
+  <circle cx="4" cy="4" r="1" fill="#FFF59D"/>
+  <circle cx="12" cy="6" r="1.5" fill="#FFE082"/>
+  <circle cx="8" cy="12" r="1" fill="#FFB74D"/>
+</svg>

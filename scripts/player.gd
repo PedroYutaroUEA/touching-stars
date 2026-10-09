@@ -17,7 +17,7 @@ signal player_died
 
 @export_group("Assists")
 @export var coyote_time: float = 0.08
-@export var jump_buffer_time: float = 0.2
+@export var jump_buffer_time: float = 0.01
 
 var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
 

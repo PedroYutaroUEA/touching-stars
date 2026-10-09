@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://lvl02"]
+
+[ext_resource type="PackedScene" uid="uid://d1g0b2k5naq80" path="res://scenes/base_level.tscn" id="1_base"]
+[ext_resource type="Script" uid="uid://icpuxa8x8i6w" path="res://scripts/level_02.gd" id="2_script"]
+[ext_resource type="PackedScene" uid="uid://ha0ard12345" path="res://entities/hazard.tscn" id="3_hazard"]
+
+[node name="Level02" unique_id=1654842503 instance=ExtResource("1_base")]
+script = ExtResource("2_script")
+level_gravity_multiplier = 0.55
+
+[node name="SpawnPoint" parent="." index="1" unique_id=1692913305]
+position = Vector2(96, 600)
+
+[node name="CometPoint" parent="." index="2" unique_id=1830228768]
+position = Vector2(1184, 450)
+
+[node name="LavaFloor" parent="." index="6" unique_id=1294824361 instance=ExtResource("3_hazard")]
+position = Vector2(640, 704)
+scale = Vector2(80, 2)
+
+[node name="SpikesHitbox" parent="." index="7" unique_id=987654321 instance=ExtResource("3_hazard")]
+position = Vector2(832, 552)
+scale = Vector2(12, 1)
