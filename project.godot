@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Touching Stars"
-run/main_scene="uid://cnoonvbqjtxhl"
+run/main_scene="res://scenes/level_01.tscn"
 config/features=PackedStringArray("4.7", "Mobile")
 config/icon="res://icon.svg"
 

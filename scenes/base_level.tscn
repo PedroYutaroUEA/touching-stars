@@ -89,21 +89,17 @@ terrain_set_0/terrain_0/name = "lunar_surface"
 terrain_set_0/terrain_0/color = Color(0.7019608, 0.7254902, 0.7019608, 1)
 sources/2 = SubResource("TileSetAtlasSource_0n1tn")
 
-[sub_resource type="TileSet" id="TileSet_eu64u"]
-physics_layer_0/collision_layer = 1
-
 [node name="BaseLevel" type="Node2D" unique_id=2007538441]
 script = ExtResource("1_blvl")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1098642297]
 tile_set = SubResource("TileSet_a8ku5")
 
-[node name="TileMap" type="TileMap" parent="." unique_id=680138006]
-tile_set = SubResource("TileSet_eu64u")
-format = 2
-
 [node name="SpawnPoint" type="Marker2D" parent="." unique_id=1692913305]
 position = Vector2(640, 360)
+
+[node name="CometPoint" type="Marker2D" parent="." unique_id=1830228768]
+position = Vector2(800, 360)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1376507925]
 position = Vector2(640, 360)

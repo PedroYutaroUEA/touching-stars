@@ -3,7 +3,7 @@ extends CharacterBody2D
 
 signal player_died
 
-@onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var sprite: Sprite2D = $Visual
 @onready var death_particles: CPUParticles2D = $DeathParticles
 
 @export_group("Movement")

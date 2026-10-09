@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://lvl01"]
+
+[ext_resource type="PackedScene" uid="uid://d1g0b2k5naq80" path="res://scenes/base_level.tscn" id="1_base"]
+[ext_resource type="Script" path="res://scripts/level_01.gd" id="2_script"]
+[ext_resource type="PackedScene" uid="uid://hazard12345" path="res://entities/hazard.tscn" id="3_hazard"]
+
+[node name="Level01" instance=ExtResource("1_base")]
+script = ExtResource("2_script")
+
+[node name="SpawnPoint" parent="." index="2"]
+position = Vector2(112, 512)
+
+[node name="CometPoint" parent="." index="3"]
+position = Vector2(1200, 512)
+
+[node name="LavaFloor" parent="." index="7" instance=ExtResource("3_hazard")]
+position = Vector2(640, 704)
+scale = Vector2(80, 2)
