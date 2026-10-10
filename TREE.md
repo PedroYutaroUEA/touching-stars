@@ -6,6 +6,10 @@ C:.
 ¦   ACTIVE_TASK.md
 ¦   AGENTS.md
 ¦   BOOTSTRAP.md
+¦   build_level_03.gd
+¦   build_level_03.gd.uid
+¦   build_platform.gd
+¦   build_platform.gd.uid
 ¦   CONTEXT.md
 ¦   icon.svg
 ¦   icon.svg.import
@@ -26,6 +30,7 @@ C:.
 ¦   ¦       base_level.tscn-folding-8fc352315ec21af922be86c6d558dec7.cfg
 ¦   ¦       create_recent.Node
 ¦   ¦       editor_layout.cfg
+¦   ¦       editor_script_doc_cache.res
 ¦   ¦       editor_script_doc_cache.res-folding-a7de57390d6e786984ca20c70a831128.cfg
 ¦   ¦       favorites.Node
 ¦   ¦       filesystem_cache10
@@ -33,6 +38,7 @@ C:.
 ¦   ¦       game.tscn-folding-c2a7af834e91ff64325daddf58e45dc0.cfg
 ¦   ¦       level_01.tscn-editstate-9db58f77472441aec537bb99f6c221d5.cfg
 ¦   ¦       level_01.tscn-folding-9db58f77472441aec537bb99f6c221d5.cfg
+¦   ¦       level_02.gd-folding-c54ec9646a353edece41f7067509bdab.cfg
 ¦   ¦       level_02.tscn-editstate-4f231799a777ecad0336ce0a2bae57d7.cfg
 ¦   ¦       level_02.tscn-folding-4f231799a777ecad0336ce0a2bae57d7.cfg
 ¦   ¦       player.gd-folding-266cf4afe7fb1a19e644760043b6046a.cfg
@@ -241,6 +247,10 @@ C:.
 ¦       level_01.gd.uid
 ¦       level_02.gd
 ¦       level_02.gd.uid
+¦       level_03.gd
+¦       level_03.gd.uid
+¦       moving_text_platform.gd
+¦       moving_text_platform.gd.uid
 ¦       player.gd
 ¦       player.gd.uid
 ¦       
@@ -255,11 +265,13 @@ C:.
     ¦       
     +---tilesets
             tileset_base.svg
+            tileset_base.svg.import
             tileset_broken-station-block.svg
             tileset_broken-station-block.svg.import
             tileset_lava.svg
             tileset_lava.svg.import
             tileset_moon.svg
+            tileset_moon.svg.import
             tileset_spike.svg
             tileset_spike.svg.import
             
