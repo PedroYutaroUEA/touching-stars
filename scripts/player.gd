@@ -25,8 +25,15 @@ var _coyote_timer: float = 0.0
 var _jump_buffer_timer: float = 0.0
 
 func _physics_process(delta: float) -> void:
+	# Handle Horizontal Movement
+	var direction: float = Input.get_axis("ui_left", "ui_right")
+	if direction != 0.0:
+		velocity.x = move_toward(velocity.x, direction * max_speed, acceleration * delta)
+	else:
+		velocity.x = move_toward(velocity.x, 0, friction * delta)
+		
 	# Handle Jump Buffer Timer
-	if Input.is_action_just_pressed("jump"):
+	if Input.is_action_just_pressed("ui_up"):
 		_jump_buffer_timer = jump_buffer_time
 	else:
 		_jump_buffer_timer -= delta
@@ -46,15 +53,8 @@ func _physics_process(delta: float) -> void:
 		_coyote_timer = 0.0
 
 	# Variable Jump Height (release jump to fall faster)
-	if Input.is_action_just_released("jump") and velocity.y < 0.0:
+	if Input.is_action_just_released("ui_up") and velocity.y < 0.0:
 		velocity.y *= 0.5
-
-	# Handle Horizontal Movement
-	var direction: float = Input.get_axis("move_left", "move_right")
-	if direction != 0.0:
-		velocity.x = move_toward(velocity.x, direction * max_speed, acceleration * delta)
-	else:
-		velocity.x = move_toward(velocity.x, 0, friction * delta)
 
 	move_and_slide()
 

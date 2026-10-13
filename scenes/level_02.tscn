@@ -16,7 +16,7 @@ position = Vector2(1184, 450)
 
 [node name="LavaFloor" parent="." index="6" unique_id=1294824361 instance=ExtResource("3_hazard")]
 position = Vector2(640, 704)
-scale = Vector2(80, 2)
+scale = Vector2(200, 5)
 
 [node name="SpikesHitbox" parent="." index="7" unique_id=987654321 instance=ExtResource("3_hazard")]
 position = Vector2(832, 552)

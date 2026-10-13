@@ -18,4 +18,4 @@ visible = true
 
 [node name="LavaFloor" parent="." index="6" unique_id=1788568479 instance=ExtResource("3_hazard")]
 position = Vector2(640, 704)
-scale = Vector2(80, 2)
+scale = Vector2(200, 5)

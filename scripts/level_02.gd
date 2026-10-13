@@ -20,7 +20,7 @@ func _build_terrain() -> void:
 	_add_rect_cells(cells, 43, 40, 2, 4)
 	
 	# Platform 3 (Goal)
-	_add_rect_cells(cells, 66, 42, 4, 3)
+	_add_rect_cells(cells, 64, 42, 2, 3)
 	
 	layer.set_cells_terrain_connect(cells, 0, 1, true)
 			
