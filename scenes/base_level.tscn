@@ -178,8 +178,17 @@ texture = ExtResource("lava_tex")
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_spike"]
 texture = ExtResource("spike_tex")
 0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(0, -5, 5, 8, -5, 8)
 0:0/1 = 1
 0:0/1/flip_v = true
+0:0/1/physics_layer_0/polygon_0/points = PackedVector2Array(0, 5, 5, -8, -5, -8)
+0:0/2 = 2
+0:0/2/transpose = true
+0:0/2/physics_layer_0/polygon_0/points = PackedVector2Array(-5, 0, 8, 5, 8, -5)
+0:0/3 = 3
+0:0/3/flip_v = true
+0:0/3/transpose = true
+0:0/3/physics_layer_0/polygon_0/points = PackedVector2Array(5, 0, -8, 5, -8, -5)
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ice"]
 texture = ExtResource("ice_tex")
 0:0/0 = 0

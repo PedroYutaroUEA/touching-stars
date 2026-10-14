@@ -34,7 +34,7 @@ var is_on_ice: bool = false
 var was_on_ice_when_jumped: bool = false
 
 func _ready() -> void:
-	_check_floor_surface()
+	_check_hazards_and_surface()
 
 func _physics_process(delta: float) -> void:
 	# Determine acceleration and friction based on surface and air state
@@ -84,9 +84,33 @@ func _physics_process(delta: float) -> void:
 		velocity.y *= 0.5
 
 	move_and_slide()
-	_check_floor_surface()
+	_check_hazards_and_surface()
 
-func _check_floor_surface() -> void:
+func _check_hazards_and_surface() -> void:
+	# 1. Slide collision check for lethal tiles (Spike = 6, Lava = 5)
+	for i in range(get_slide_collision_count()):
+		var col: KinematicCollision2D = get_slide_collision(i)
+		var collider: Object = col.get_collider()
+		if collider is TileMapLayer:
+			var layer: TileMapLayer = collider as TileMapLayer
+			var hit_point: Vector2 = col.get_position() - col.get_normal() * 4.0
+			var map_pos: Vector2i = layer.local_to_map(layer.to_local(hit_point))
+			var src_id: int = layer.get_cell_source_id(map_pos)
+			if src_id == 6 or src_id == 5:
+				die()
+				return
+
+	# 2. Probe check player points against lethal tiles in TileMapLayer
+	var parent_layer: TileMapLayer = get_parent().get_node_or_null("TileMapLayer") as TileMapLayer
+	if parent_layer:
+		for probe_offset in [Vector2(0, -8), Vector2(-6, -2), Vector2(6, -2), Vector2(-6, -14), Vector2(6, -14)]:
+			var probe_pos: Vector2 = global_position + probe_offset
+			var map_pos: Vector2i = parent_layer.local_to_map(parent_layer.to_local(probe_pos))
+			var src_id: int = parent_layer.get_cell_source_id(map_pos)
+			if src_id == 6 or src_id == 5:
+				die()
+				return
+
 	if always_ice:
 		is_on_ice = true
 		return
@@ -96,7 +120,7 @@ func _check_floor_surface() -> void:
 
 	is_on_ice = false
 
-	# 1. Slide collision check (exact physics contact point)
+	# Check floor slide collisions for Ice (Source 7)
 	for i in range(get_slide_collision_count()):
 		var col: KinematicCollision2D = get_slide_collision(i)
 		if col.get_normal().y < -0.6:
@@ -109,8 +133,7 @@ func _check_floor_surface() -> void:
 					is_on_ice = true
 					return
 
-	# 2. Direct probe check beneath player's feet (center, left foot, right foot)
-	var parent_layer: TileMapLayer = get_parent().get_node_or_null("TileMapLayer") as TileMapLayer
+	# Direct probe check beneath player's feet
 	if parent_layer:
 		for offset_x in [0.0, -6.0, 6.0]:
 			var probe_pos: Vector2 = global_position + Vector2(offset_x, 4.0)
