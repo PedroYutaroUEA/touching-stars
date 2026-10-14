@@ -5,6 +5,11 @@
 - [x] Level 01: The floor is lava (Deadly lava floor; fixed platforms)
 - [x] Level 02: Moon gravity (Reduced gravity (40%); floaty jumps)
 - [x] Level 03: Moving platforms (Platforms moving along X and Y axes)
-- [ ] Level 04: Floor is ice (Zero floor friction; inertial sliding)
+- [x] Level 04: Floor is ice (Zero floor friction; inertial sliding)
+  - [x] Align requirements and physics edge cases via Grill-Me questionnaire
+  - [x] Update TileSet in base_level.tscn with new SVG tiles (ice, broken station outter, corner, filling)
+  - [x] Implement dynamic surface detection and ice physics in player.gd
+  - [x] Create scripts/level_04.gd and scenes/level_04.tscn with 3-tier vertical parkour, narrow ice pillars (2-3 tiles), safe havens, and ceiling hazards
+  - [x] Verify scene progression and syntax
 - [ ] Level 05: Spikes everywhere (Fixed spikes on primary paths)
 - [ ] Level 06: Saturn gravity (Heavy gravity (250%); extremely short jumps)

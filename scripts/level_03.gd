@@ -46,7 +46,7 @@ func _spawn_platforms() -> void:
 	_add_platform("STEP", 0, Vector2(850, 450), Vector2(0, -100), 1.0)
 	_add_platform("ON", 0, Vector2(950, 300), Vector2(0, 100), 1.0)
 	# Final trap
-	_add_platform("ME?", 1, Vector2(1100, 150), Vector2(150, 0), 0.5)
+	_add_platform("ME?", 1, Vector2(1100, 140), Vector2(150, 0), 0.5)
 	# Pussy block
 	_add_platform("ME!", 0, Vector2(1100, 300), Vector2(250, 0), 1.0)
 	
