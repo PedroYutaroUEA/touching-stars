@@ -86,30 +86,68 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	_check_hazards_and_surface()
 
+func _get_player_world_rect() -> Rect2:
+	# 16x16 player bounding box centered at (0, -8) relative to global_position
+	return Rect2(global_position.x - 8.0, global_position.y - 16.0, 16.0, 16.0)
+
+func _get_spike_world_rect(layer: TileMapLayer, cell: Vector2i) -> Rect2:
+	var center: Vector2 = layer.to_global(layer.map_to_local(cell))
+	var alt: int = layer.get_cell_alternative_tile(cell)
+	var local_rect: Rect2
+	match alt:
+		1, 12288: # Downward spike (hanging from ceiling)
+			local_rect = Rect2(-2.0, -3.0, 4.0, 7.0)
+		20480: # Rightward spike (protruding right from left wall)
+			local_rect = Rect2(-3.0, -2.0, 7.0, 4.0)
+		2, 3, 24576: # Leftward spike (protruding left from right wall)
+			local_rect = Rect2(-4.0, -2.0, 7.0, 4.0)
+		_: # Upward spike (0, sitting on floor)
+			local_rect = Rect2(-2.0, -4.0, 4.0, 7.0)
+	return Rect2(center + local_rect.position, local_rect.size)
+
 func _check_hazards_and_surface() -> void:
-	# 1. Slide collision check for lethal tiles (Spike = 6, Lava = 5)
+	var parent_layer: TileMapLayer = get_parent().get_node_or_null("TileMapLayer") as TileMapLayer
+
+	# 1. Slide collision check for lethal tiles and hazard objects
 	for i in range(get_slide_collision_count()):
 		var col: KinematicCollision2D = get_slide_collision(i)
 		var collider: Object = col.get_collider()
+		if collider and collider.is_in_group("hazards"):
+			die()
+			return
+
 		if collider is TileMapLayer:
 			var layer: TileMapLayer = collider as TileMapLayer
-			var hit_point: Vector2 = col.get_position() - col.get_normal() * 4.0
-			var map_pos: Vector2i = layer.local_to_map(layer.to_local(hit_point))
-			var src_id: int = layer.get_cell_source_id(map_pos)
-			if src_id == 6 or src_id == 5:
-				die()
-				return
+			for offset in [Vector2.ZERO, -col.get_normal() * 2.0]:
+				var cell: Vector2i = layer.local_to_map(layer.to_local(col.get_position() + offset))
+				var src_id: int = layer.get_cell_source_id(cell)
+				if src_id == 5: # Lava: full cell hazard
+					die()
+					return
+				elif src_id == 6: # Spike: verify contact point is actually on the spike hitbox
+					var spike_rect: Rect2 = _get_spike_world_rect(layer, cell)
+					if spike_rect.grow(2.0).has_point(col.get_position()):
+						die()
+						return
 
-	# 2. Probe check player points against lethal tiles in TileMapLayer
-	var parent_layer: TileMapLayer = get_parent().get_node_or_null("TileMapLayer") as TileMapLayer
+	# 2. Precise bounding-box intersection check against lethal tiles in TileMapLayer
 	if parent_layer:
-		for probe_offset in [Vector2(0, -8), Vector2(-6, -2), Vector2(6, -2), Vector2(-6, -14), Vector2(6, -14)]:
-			var probe_pos: Vector2 = global_position + probe_offset
-			var map_pos: Vector2i = parent_layer.local_to_map(parent_layer.to_local(probe_pos))
-			var src_id: int = parent_layer.get_cell_source_id(map_pos)
-			if src_id == 6 or src_id == 5:
-				die()
-				return
+		var p_rect: Rect2 = _get_player_world_rect()
+		var min_cell: Vector2i = parent_layer.local_to_map(parent_layer.to_local(p_rect.position))
+		var max_cell: Vector2i = parent_layer.local_to_map(parent_layer.to_local(p_rect.end))
+
+		for cx in range(min_cell.x, max_cell.x + 1):
+			for cy in range(min_cell.y, max_cell.y + 1):
+				var cell := Vector2i(cx, cy)
+				var src_id: int = parent_layer.get_cell_source_id(cell)
+				if src_id == 5: # Lava
+					die()
+					return
+				elif src_id == 6: # Spike
+					var spike_rect: Rect2 = _get_spike_world_rect(parent_layer, cell)
+					if p_rect.intersects(spike_rect):
+						die()
+						return
 
 	if always_ice:
 		is_on_ice = true

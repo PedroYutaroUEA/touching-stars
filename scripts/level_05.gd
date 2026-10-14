@@ -1,6 +1,11 @@
 class_name Level05
 extends BaseLevel
 
+# Base tile flags provided by Godot
+const FLIP_H = 1 << 12
+const FLIP_V = 1 << 13
+const TRANSPOSE = 1 << 14
+
 func _ready() -> void:
 	super._ready()
 	_build_spike_maze()
@@ -53,9 +58,8 @@ func _build_spike_maze() -> void:
 	_build_platform_composite(layer, 2, 7, 40)
 
 	# Platforms with side-attached spikes (no floating spikes in mid-air!)
-	# Platform 1: X = 9..11
+	# Platform 1: X = 10..12
 	_set_spike_right(layer, 8, 40) # Spike sticking right from spawn base
-	_set_spike_left(layer, 8, 40)  # Overridden below cleanly:
 	_build_platform_composite(layer, 10, 12, 40)
 	_set_spike_left(layer, 9, 40)   # Protruding left from platform 1
 	_set_spike_right(layer, 13, 40) # Protruding right from platform 1
@@ -91,9 +95,10 @@ func _build_spike_maze() -> void:
 	_set_spike_right(layer, 55, 40)
 
 	# Platform 8 (Lead into Shaft 1): X = 59..68
-	_build_platform_composite(layer, 59, 68, 40)
 	_set_spike_left(layer, 58, 40)
-
+	_build_platform_composite(layer, 59, 68, 40)
+	_set_spike_right(layer, 69, 40)
+	
 	# Ceiling spikes under Divider 1 to force controlled hops
 	for x in range(14, 25):
 		_set_spike_down(layer, x, 35)
@@ -111,7 +116,9 @@ func _build_spike_maze() -> void:
 
 	# Left wall at X = 69: NO BLOCKING SPIKES AT Y = 26..33 (Entrance to Floor 2 is OPEN!)
 	# Stepping stones in Shaft 1 (2x1 and 1x1 metal blocks)
-	_build_platform_composite(layer, 72, 74, 38)
+	_set_spike_left(layer, 72, 38)
+	_build_platform_composite(layer, 73, 75, 38)
+	_set_spike_up(layer, 75, 37)
 	_build_platform_composite(layer, 70, 72, 35)
 	_build_platform_composite(layer, 73, 75, 32)
 	_build_platform_composite(layer, 70, 72, 29)
@@ -123,36 +130,32 @@ func _build_spike_maze() -> void:
 	# Base Floor at Y = 32
 	for x in range(11, 69):
 		layer.set_cell(Vector2i(x, 32), 8, Vector2i(0, 0), 0)
+	
+	_set_spike_up(layer, 68, 31)
 
 	# Entrance landing at X = 64..68
-	# Zipper Teeth alternating ceiling stalactites and floor hurdles:
-	# Ceiling Tooth 1 (comes down to Y=28, spike at Y=29)
-	_build_ceiling_tooth(layer, 60, 25, 4)
-	# Floor Tooth 1 (comes up to Y=30, spike at Y=29)
-	_build_floor_tooth(layer, 55, 31, 2)
+	# Zipper Teeth alternating ceiling stalactwites and floor hurdles:
+	for x in range(65, 50, -6):
+		# Floor Tooth 1 - 3 (comes up to Y=30, spike at Y=29)
+		_build_floor_tooth(layer, x, 31, 3)
+		# Ceiling Tooth 1 - 3 (comes down to Y=28, spike at Y=29)
+		_build_ceiling_tooth(layer, x - 3, 25, 4)
+	
+	# Floor Tooth mountain 3
+	_build_floor_tooth(layer, 47, 31, 1)
+	_build_floor_tooth(layer, 46, 31, 2)
+	_build_floor_tooth(layer, 45, 31, 3)
+	_build_floor_tooth(layer, 44, 31, 3)
+	_build_floor_tooth(layer, 43, 31, 3)
+	_build_floor_tooth(layer, 42, 31, 2)
+	_build_floor_tooth(layer, 41, 31, 1)
 
-	# Ceiling Tooth 2
-	_build_ceiling_tooth(layer, 50, 25, 4)
-	# Floor Tooth 2
-	_build_floor_tooth(layer, 45, 31, 2)
-
-	# Ceiling Tooth 3
-	_build_ceiling_tooth(layer, 40, 25, 4)
-	# Floor Tooth 3
-	_build_floor_tooth(layer, 35, 31, 2)
-
-	# Ceiling Tooth 4
-	_build_ceiling_tooth(layer, 30, 25, 4)
-	# Floor Tooth 4
-	_build_floor_tooth(layer, 25, 31, 2)
-
-	# Ceiling Tooth 5
-	_build_ceiling_tooth(layer, 20, 25, 4)
-	# Floor Tooth 5
-	_build_floor_tooth(layer, 16, 31, 2)
-
-	# Floor 2 Exit landing at X = 11..14
-	# Leads directly into Shaft 2 without obstacles!
+	# Zipper Teeth alternating that leads directly into Shaft 2 without obstacles!:
+	for x in range(38, 11, -6):
+		# Floor Tooth 1 - 8 (comes up to Y=30, spike at Y=29)
+		_build_floor_tooth(layer, x, 31, 2) 
+		# Ceiling Tooth 1 - 8 (comes down to Y=28, spike at Y=29)
+		_build_ceiling_tooth(layer, x - 3, 25, 5)
 
 	# =========================================================================
 	# 6. SHAFT 2: Vertical Climb (Left Side: X = 2..10, Y = 15..30)
@@ -162,34 +165,53 @@ func _build_spike_maze() -> void:
 		_set_spike_right(layer, 2, y)
 
 	# Right wall of shaft: NO BLOCKING SPIKES AT Y = 16..24 (Doorway to Floor 3 is OPEN!)
-	# Stepping stones climbing up to Floor 3
+	for x in range(10, 1, -1):
+		_set_spike_up(layer, x, 33)
+		
+	# === Stepping stones climbing up to Floor 3 ===
 	_build_platform_composite(layer, 4, 6, 28)
-	_build_platform_composite(layer, 6, 8, 25)
-	_build_platform_composite(layer, 3, 5, 22)
+	_build_platform_composite(layer, 4, 6, 25)
+	
+	# Straight jump
+	_build_platform_composite(layer, 2, 2, 22)
+	_set_spike_right(layer, 3, 22)
+	
+	_set_spike_left(layer, 5, 22)
+	_build_platform_composite(layer, 6, 8, 22)
+	_set_spike_right(layer, 9, 22)
+		
+	_set_spike_left(layer, 5, 19)
 	_build_platform_composite(layer, 6, 8, 19)
-
+	_set_spike_right(layer, 9, 19)
+	
 	# =========================================================================
 	# 7. FLOOR 3: The 5-Platform Gauntlet (Moving Left -> Right, Y = 15..23)
 	# =========================================================================
 	# Bed of spikes moved 1 block down to Y = 23 (more vertical breathing room)
-	for x in range(11, 68):
+	for x in range(11, 78):
 		_set_spike_up(layer, x, 23)
 
 	# ONLY 5 Challenging Platforms across the entire span:
 	# Platform 1: Landing at X = 11..14 (Y = 20)
-	_build_platform_composite(layer, 11, 14, 20)
-
+	_build_platform_composite(layer, 12, 15, 20)
+	_set_spike_left(layer, 11, 20)
 	# Platform 2: X = 23..25 (Y = 20) - 8-tile gap!
-	_build_platform_composite(layer, 23, 25, 20)
+	_build_platform_composite(layer, 23, 26, 20)
+	_set_spike_left(layer, 22, 20)
 
 	# Platform 3: X = 34..36 (Y = 20) - 8-tile gap!
-	_build_platform_composite(layer, 34, 36, 20)
+	_build_platform_composite(layer, 34, 37, 20)
+	_set_spike_left(layer, 33, 20)
+
 
 	# Platform 4: X = 45..47 (Y = 20) - 8-tile gap!
-	_build_platform_composite(layer, 45, 47, 20)
+	_build_platform_composite(layer, 45, 48, 20)
+	_set_spike_left(layer, 44, 20)
+
 
 	# Platform 5: X = 56..58 (Y = 20) - 8-tile gap!
 	_build_platform_composite(layer, 56, 58, 20)
+	_set_spike_left(layer, 55, 20)
 
 	# Exit Landing to Shaft 3: X = 66..68 (Y = 20)
 	_build_platform_composite(layer, 66, 68, 20)
@@ -221,22 +243,27 @@ func _build_spike_maze() -> void:
 		_set_spike_up(layer, x, 13)
 
 	# Ceiling spikes with solid blocks above them (Row 3 ceiling)
-	for x in range(11, 69):
+	for x in range(11, 78):
 		_set_spike_down(layer, x, 3)
 
 	# Hanging stalactite hazards: solid block at Y=4 with spike at Y=5 (No loose spikes!)
-	for sx in [61, 53, 45, 37, 29, 21]:
-		layer.set_cell(Vector2i(sx, 4), 4, Vector2i(0, 0), 0) # Solid block
-		_set_spike_down(layer, sx, 5)                         # Spike attached below
+	for sx in [61, 53, 45, 37, 29, 21, 13]:
+		layer.set_cell(Vector2i(sx, 3), 4, Vector2i(0, 0), 0) # Solid block
+		_set_spike_down(layer, sx, 4) # Spike attached below
+		_set_spike_up(layer, sx, 7) # Spike attached above
+		layer.set_cell(Vector2i(sx, 8), 4, Vector2i(0, 0), 0) # Solid block
+		_set_spike_right(layer, sx + 1, 8)
+		_set_spike_left(layer, sx - 1, 8)
+		
 
 	# Floating stepping platforms at Y = 8
-	_build_platform_composite(layer, 64, 66, 8)
-	_build_platform_composite(layer, 56, 58, 8)
-	_build_platform_composite(layer, 48, 50, 8)
-	_build_platform_composite(layer, 40, 42, 8)
-	_build_platform_composite(layer, 32, 34, 8)
-	_build_platform_composite(layer, 24, 26, 8)
-	_build_platform_composite(layer, 16, 18, 8) # Final launch platform!
+	_build_platform_composite(layer, 64, 64, 9)
+	_build_platform_composite(layer, 56, 56, 12)
+	_build_platform_composite(layer, 48, 48, 9)
+	_build_platform_composite(layer, 40, 40, 12)
+	_build_platform_composite(layer, 32, 32, 9)
+	_build_platform_composite(layer, 24, 24, 12)
+	_build_platform_composite(layer, 16, 16, 9) # Final launch platform!
 
 	# =========================================================================
 	# 10. GOAL SANCTUM (Upper-Left: X = 2..11, Y = 4..9)
@@ -261,16 +288,19 @@ func _build_spike_maze() -> void:
 # HELPER FUNCTIONS (Tileset variations, Spikes, and Composites)
 # =============================================================================
 func _set_spike_up(layer: TileMapLayer, x: int, y: int) -> void:
-	layer.set_cell(Vector2i(x, y), 6, Vector2i(0, 0), 0)
+	layer.set_cell(Vector2i(x, y), 6, Vector2i(0, 0), 0) # Normal
 
 func _set_spike_down(layer: TileMapLayer, x: int, y: int) -> void:
-	layer.set_cell(Vector2i(x, y), 6, Vector2i(0, 0), 1)
+	# Flip H + Flip V = 180 degree rotation
+	layer.set_cell(Vector2i(x, y), 6, Vector2i(0, 0), FLIP_H | FLIP_V) 
 
 func _set_spike_left(layer: TileMapLayer, x: int, y: int) -> void:
-	layer.set_cell(Vector2i(x, y), 6, Vector2i(0, 0), 2)
+	# Flip V + Transpose = Counter-Clockwise rotation
+	layer.set_cell(Vector2i(x, y), 6, Vector2i(0, 0), FLIP_V | TRANSPOSE) 
 
 func _set_spike_right(layer: TileMapLayer, x: int, y: int) -> void:
-	layer.set_cell(Vector2i(x, y), 6, Vector2i(0, 0), 3)
+	# Flip H + Transpose = Clockwise rotation
+	layer.set_cell(Vector2i(x, y), 6, Vector2i(0, 0), FLIP_H | TRANSPOSE)
 
 func _build_divider(layer: TileMapLayer, start_x: int, end_x: int, y: int) -> void:
 	for x in range(start_x, end_x + 1):

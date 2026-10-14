@@ -22,37 +22,17 @@ C:.
 |   |   uid_cache.bin
 |   |   
 |   +---editor
-|   |       base_level.tscn-editstate-8fc352315ec21af922be86c6d558dec7.cfg
-|   |       base_level.tscn-folding-8fc352315ec21af922be86c6d558dec7.cfg
-|   |       create_recent.Node
 |   |       editor_layout.cfg
 |   |       editor_script_doc_cache.res
 |   |       editor_script_doc_cache.res-folding-a7de57390d6e786984ca20c70a831128.cfg
-|   |       favorites.Node
 |   |       filesystem_cache10
-|   |       game.tscn-editstate-c2a7af834e91ff64325daddf58e45dc0.cfg
-|   |       game.tscn-folding-c2a7af834e91ff64325daddf58e45dc0.cfg
+|   |       filesystem_update4
 |   |       level_01.tscn-editstate-9db58f77472441aec537bb99f6c221d5.cfg
 |   |       level_01.tscn-folding-9db58f77472441aec537bb99f6c221d5.cfg
-|   |       level_02.gd-folding-c54ec9646a353edece41f7067509bdab.cfg
-|   |       level_02.tscn-editstate-4f231799a777ecad0336ce0a2bae57d7.cfg
-|   |       level_02.tscn-folding-4f231799a777ecad0336ce0a2bae57d7.cfg
-|   |       level_03.gd-folding-f225a8d3a8db8c9ef01c1c371b945683.cfg
-|   |       level_03.tscn-editstate-340885887f59b7d0b6b91fb0a3f3d03b.cfg
-|   |       level_03.tscn-folding-340885887f59b7d0b6b91fb0a3f3d03b.cfg
-|   |       level_04.gd-folding-cf77b2288adb75edac5a80e04a0dd3a4.cfg
-|   |       level_04.tscn-editstate-a046be99ad1cfefdb137119db06bed26.cfg
-|   |       level_04.tscn-folding-a046be99ad1cfefdb137119db06bed26.cfg
+|   |       level_05.gd-folding-d04156dd9e7f5ce8482c4d0d54404a25.cfg
 |   |       level_05.tscn-editstate-514c72008c374b5daff40578dee639c8.cfg
 |   |       level_05.tscn-folding-514c72008c374b5daff40578dee639c8.cfg
-|   |       moving_text_platform.gd-folding-1c3e173175e04a99e6ca2e5417e60510.cfg
-|   |       moving_text_platform.tscn-editstate-af293ee35669203f01fc662aa1c72eba.cfg
-|   |       moving_text_platform.tscn-folding-af293ee35669203f01fc662aa1c72eba.cfg
-|   |       player.gd-folding-266cf4afe7fb1a19e644760043b6046a.cfg
-|   |       player.tscn-editstate-8c2956c0191e94ea8775e2e449c590f7.cfg
-|   |       player.tscn-folding-8c2956c0191e94ea8775e2e449c590f7.cfg
 |   |       project_metadata.cfg
-|   |       recent_dirs
 |   |       script_editor_cache.cfg
 |   |       
 |   +---imported
@@ -62,8 +42,6 @@ C:.
 |   |       comet.svg-e0b837f2bda0c00cb2d0f28b978ad6e6.md5
 |   |       icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex
 |   |       icon.svg-218a8f2b3041327d8a5756f3a245f83b.md5
-|   |       tielset_lava.svg-9c8c3abded67753eb19a42562f3e032f.ctex
-|   |       tielset_lava.svg-9c8c3abded67753eb19a42562f3e032f.md5
 |   |       tileset_base.svg-2759995b8815df0e49e5b34fbfc280c8.ctex
 |   |       tileset_base.svg-2759995b8815df0e49e5b34fbfc280c8.md5
 |   |       tileset_broken-station-block.svg-e2d3e497aa911c0ff1e95b641ddb63da.ctex
@@ -110,7 +88,6 @@ C:.
 |       |           89e0c5a264d1558e7bc2ca0dc3d0afd834fbe7b6.d3d12.cache
 |       |           8f9335de72e837eeead40640cc01fddc5baf5a7c.d3d12.cache
 |       |           b7f8864ed1b8040a3456125a335ae926e257bf47.d3d12.cache
-|       |           bf1adcfe745b8b373e2d38fa2ed979642b0f9b3f.d3d12.cache
 |       |           c2f7efc3419efdd79fabd056897820a83f2ac2c9.d3d12.cache
 |       |           ddf1c2fb49f2d96e42d4ffa10cbbb808b4b14063.d3d12.cache
 |       |           

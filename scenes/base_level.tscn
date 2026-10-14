@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://d1g0b2k5naq80"]
 
 [ext_resource type="Script" uid="uid://b4i8lu3dxq1b" path="res://scripts/base_level.gd" id="1_blvl"]
-[ext_resource type="Texture2D" uid="uid://moon_tex_uid" path="res://sprites/tilesets/tileset_moon.svg" id="moon_tex"]
-[ext_resource type="Texture2D" uid="uid://station_tex_uid" path="res://sprites/tilesets/tileset_broken-station-block.svg" id="station_tex"]
-[ext_resource type="Texture2D" uid="uid://lava_tex_uid" path="res://sprites/tilesets/tileset_lava.svg" id="lava_tex"]
-[ext_resource type="Texture2D" uid="uid://spike_tex_uid" path="res://sprites/tilesets/tileset_spike.svg" id="spike_tex"]
-[ext_resource type="Texture2D" uid="uid://cd13fw1tcr0ju" path="res://sprites/tilesets/tileset_base.svg" id="2_dbkse"]
+[ext_resource type="Texture2D" uid="uid://dsvhjgf66mg7w" path="res://sprites/tilesets/tileset_moon.svg" id="moon_tex"]
+[ext_resource type="Texture2D" uid="uid://cbep0e5org0b3" path="res://sprites/tilesets/tileset_broken-station-block.svg" id="station_tex"]
+[ext_resource type="Texture2D" uid="uid://h131rp8sy806" path="res://sprites/tilesets/tileset_lava.svg" id="lava_tex"]
+[ext_resource type="Texture2D" uid="uid://cvgh7h3joyi7q" path="res://sprites/tilesets/tileset_spike.svg" id="spike_tex"]
+[ext_resource type="Texture2D" uid="uid://h8atch18kemu" path="res://sprites/tilesets/tileset_base.svg" id="2_dbkse"]
 [ext_resource type="Texture2D" uid="uid://j1wpaxqwij18" path="res://sprites/tilesets/tileset_ice.svg" id="ice_tex"]
 [ext_resource type="Texture2D" uid="uid://c1hqwq0t6u1pk" path="res://sprites/tilesets/tileset_broken-station-outter.svg" id="station_outter_tex"]
 [ext_resource type="Texture2D" uid="uid://424c48fcxovc" path="res://sprites/tilesets/tileset_broken-station-corner.svg" id="station_corner_tex"]
@@ -178,17 +178,29 @@ texture = ExtResource("lava_tex")
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_spike"]
 texture = ExtResource("spike_tex")
 0:0/0 = 0
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(0, -5, 5, 8, -5, 8)
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2, -4, 2, -4, 2, 3, -2, 3)
 0:0/1 = 1
 0:0/1/flip_v = true
-0:0/1/physics_layer_0/polygon_0/points = PackedVector2Array(0, 5, 5, -8, -5, -8)
+0:0/1/physics_layer_0/polygon_0/points = PackedVector2Array(-2, -3, 2, -3, 2, 4, -2, 4)
 0:0/2 = 2
 0:0/2/transpose = true
-0:0/2/physics_layer_0/polygon_0/points = PackedVector2Array(-5, 0, 8, 5, 8, -5)
+0:0/2/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -2, 3, -2, 3, 2, -4, 2)
 0:0/3 = 3
 0:0/3/flip_v = true
 0:0/3/transpose = true
-0:0/3/physics_layer_0/polygon_0/points = PackedVector2Array(5, 0, -8, 5, -8, -5)
+0:0/3/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -2, 3, -2, 3, 2, -4, 2)
+0:0/12288 = 12288
+0:0/12288/flip_h = true
+0:0/12288/flip_v = true
+0:0/12288/physics_layer_0/polygon_0/points = PackedVector2Array(-2, -3, 2, -3, 2, 4, -2, 4)
+0:0/24576 = 24576
+0:0/24576/flip_v = true
+0:0/24576/transpose = true
+0:0/24576/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -2, 3, -2, 3, 2, -4, 2)
+0:0/20480 = 20480
+0:0/20480/flip_h = true
+0:0/20480/transpose = true
+0:0/20480/physics_layer_0/polygon_0/points = PackedVector2Array(-3, -2, 4, -2, 4, 2, -3, 2)
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ice"]
 texture = ExtResource("ice_tex")
 0:0/0 = 0
