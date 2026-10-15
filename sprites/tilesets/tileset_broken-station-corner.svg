@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+  <rect width="16" height="16" fill="#455A64"/>
+  <!-- Reforço em 'L' nas bordas -->
+  <rect x="0" y="0" width="16" height="3" fill="#78909C"/>
+  <rect x="0" y="0" width="3" height="16" fill="#78909C"/>
+  <!-- Linhas delimitadoras da chapa em 'L' -->
+  <line x1="3" y1="3" x2="16" y2="3" stroke="#263238" stroke-width="1"/>
+  <line x1="3" y1="3" x2="3" y2="16" stroke="#263238" stroke-width="1"/>
+  <!-- Painel decorativo na parte de trás -->
+  <line x1="8" y1="8" x2="16" y2="8" stroke="#263238" stroke-width="1"/>
+  <line x1="8" y1="8" x2="8" y2="16" stroke="#263238" stroke-width="1"/>
+  <!-- Rebite principal da quina -->
+  <circle cx="1.5" cy="1.5" r="0.5" fill="#263238"/>
+</svg>

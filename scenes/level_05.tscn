@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://lvl05"]
+
+[ext_resource type="PackedScene" uid="uid://d1g0b2k5naq80" path="res://scenes/base_level.tscn" id="1_base"]
+[ext_resource type="Script" uid="uid://b1rxfde2kwwwp" path="res://scripts/level_05.gd" id="2_script"]
+[ext_resource type="PackedScene" uid="uid://ha0ard12345" path="res://entities/hazard.tscn" id="3_hazard"]
+
+[node name="Level05" unique_id=1550842505 instance=ExtResource("1_base")]
+script = ExtResource("2_script")
+
+[node name="SpawnPoint" parent="." index="1" unique_id=1692913305]
+position = Vector2(72, 640)
+
+[node name="CometPoint" parent="." index="2" unique_id=1830228768]
+position = Vector2(110, 112)
+
+[node name="LevelClearLabel" parent="UILayer" parent_id_path=PackedInt32Array(185168009) index="0" unique_id=550781968]
+visible = true
+
+[node name="LavaFloor" parent="." index="6" unique_id=1294824361 instance=ExtResource("3_hazard")]
+position = Vector2(640, 704)
+scale = Vector2(200, 5)

@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://m0v1ngp14tf0rm"]
+
+[ext_resource type="Script" uid="uid://3mjlr348oqim" path="res://scripts/moving_text_platform.gd" id="1_script"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_platform"]
+size = Vector2(100, 24)
+
+[node name="MovingTextPlatform" type="AnimatableBody2D"]
+script = ExtResource("1_script")
+
+[node name="Label" type="Label" parent="."]
+z_index = 10
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_platform")
+
+[node name="HazardArea" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HazardArea"]
+shape = SubResource("RectangleShape2D_platform")

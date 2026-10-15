@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+  <rect width="16" height="16" fill="#455A64"/>
+  <!-- Borda reforçada (Highlight na ponta) -->
+  <rect x="0" y="0" width="16" height="3" fill="#78909C"/>
+  <!-- Linha divisória da chapa -->
+  <line x1="0" y1="3" x2="16" y2="3" stroke="#263238" stroke-width="1"/>
+  <!-- Linha de painel vertical central (alinha com as outras peças) -->
+  <line x1="8" y1="3" x2="8" y2="16" stroke="#263238" stroke-width="1"/>
+  <!-- Parafusos / Rebites na borda reforçada -->
+  <circle cx="4" cy="1.5" r="0.5" fill="#263238"/>
+  <circle cx="12" cy="1.5" r="0.5" fill="#263238"/>
+</svg>

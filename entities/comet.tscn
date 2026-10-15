@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/comet.gd" id="1_comet"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_comet"]
-radius = 48.0
+radius = 24.0
 
 [node name="Comet" type="Area2D"]
 collision_layer = 8
@@ -17,7 +17,7 @@ shape = SubResource("CircleShape2D_comet")
 amount = 20
 lifetime = 1.5
 emission_shape = 1
-emission_sphere_radius = 24.0
+emission_sphere_radius = 12.0
 direction = Vector2(0, -1)
 spread = 30.0
 gravity = Vector2(0, -20)
@@ -34,7 +34,7 @@ lifetime = 0.8
 one_shot = true
 explosiveness = 0.9
 emission_shape = 1
-emission_sphere_radius = 16.0
+emission_sphere_radius = 8.0
 direction = Vector2(0, -1)
 spread = 180.0
 gravity = Vector2(0, 0)
@@ -46,4 +46,4 @@ color = Color(1, 1, 0.5, 1)
 
 [node name="Visual" type="Polygon2D" parent="."]
 color = Color(1, 0.9, 0.2, 1)
-polygon = PackedVector2Array(0, -24, 8, -8, 24, 0, 8, 8, 0, 24, -8, 8, -24, 0, -8, -8)
+polygon = PackedVector2Array(0, -12, 4, -4, 12, 0, 4, 4, 0, 12, -4, 4, -12, 0, -4, -4)

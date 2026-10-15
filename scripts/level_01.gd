@@ -4,6 +4,15 @@ extends BaseLevel
 func _ready() -> void:
 	super._ready()
 	_build_pillars()
+	_build_lava()
+
+func _build_lava() -> void:
+	var layer = $TileMapLayer as TileMapLayer
+	if not layer: return
+	# Lava floor: x from 0 to 79, y from 43 to 45 (last 2 rows)
+	for x in range(80):
+		layer.set_cell(Vector2i(x, 43), 5, Vector2i(0, 0))
+		layer.set_cell(Vector2i(x, 44), 5, Vector2i(0, 0))
 
 func _build_pillars() -> void:
 	var layer = $TileMapLayer as TileMapLayer
@@ -19,10 +28,10 @@ func _build_pillars() -> void:
 	_add_rect_cells(cells, 22, 37, 4, 8)
 	
 	# Platform 3 (Higher):
-	_add_rect_cells(cells, 38, 30, 5, 15)
+	_add_rect_cells(cells, 38, 31, 5, 14)
 	
 	# Platform 4 (Lower):
-	_add_rect_cells(cells, 55, 38, 4, 7)
+	_add_rect_cells(cells, 55, 38, 2, 7)
 	
 	# Platform 5 (Comet Goal):
 	_add_rect_cells(cells, 72, 34, 6, 11)
