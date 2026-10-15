@@ -59,12 +59,14 @@ func _build_spike_maze() -> void:
 
 	# Platforms with side-attached spikes (no floating spikes in mid-air!)
 	# Platform 1: X = 10..12
+	_set_spike_up(layer, 7, 39)
 	_set_spike_right(layer, 8, 40) # Spike sticking right from spawn base
 	_build_platform_composite(layer, 10, 12, 40)
 	_set_spike_left(layer, 9, 40)   # Protruding left from platform 1
-	_set_spike_right(layer, 13, 40) # Protruding right from platform 1
+	_set_spike_up(layer, 10, 39)
 
 	# Platform 2: X = 16..18
+	_set_spike_right(layer, 13, 40) # Protruding right from platform 1
 	_build_platform_composite(layer, 16, 18, 40)
 	_set_spike_left(layer, 15, 40)
 	_set_spike_right(layer, 19, 40)
@@ -75,19 +77,25 @@ func _build_spike_maze() -> void:
 	_set_spike_right(layer, 25, 40)
 
 	# Platform 4: X = 28..31
-	_build_platform_composite(layer, 28, 31, 40)
 	_set_spike_left(layer, 27, 40)
+	_set_spike_up(layer, 28, 39)
+	_build_platform_composite(layer, 28, 31, 40)
+	_set_spike_up(layer, 31, 39)
 	_set_spike_right(layer, 32, 40)
 
 	# Platform 5: X = 35..38
-	_build_platform_composite(layer, 35, 38, 40)
 	_set_spike_left(layer, 34, 40)
+	_set_spike_up(layer, 35, 39)
+	_build_platform_composite(layer, 35, 38, 40)
 	_set_spike_right(layer, 39, 40)
 
 	# Platform 6: X = 43..46
+	_set_spike_down(layer, 42, 36)
+	#_set_spike_left(layer, 42, 40)
 	_build_platform_composite(layer, 43, 46, 40)
-	_set_spike_left(layer, 42, 40)
-	_set_spike_right(layer, 47, 40)
+	_set_spike_up(layer, 45, 39)
+	#_set_spike_right(layer, 47, 40)
+	_set_spike_down(layer, 47, 36)
 
 	# Platform 7: X = 51..54
 	_build_platform_composite(layer, 51, 54, 40)
@@ -139,7 +147,7 @@ func _build_spike_maze() -> void:
 		# Floor Tooth 1 - 3 (comes up to Y=30, spike at Y=29)
 		_build_floor_tooth(layer, x, 31, 3)
 		# Ceiling Tooth 1 - 3 (comes down to Y=28, spike at Y=29)
-		_build_ceiling_tooth(layer, x - 3, 25, 4)
+		_build_ceiling_tooth(layer, x - 3, 25, 5)
 	
 	# Floor Tooth mountain 3
 	_build_floor_tooth(layer, 47, 31, 1)
@@ -153,7 +161,7 @@ func _build_spike_maze() -> void:
 	# Zipper Teeth alternating that leads directly into Shaft 2 without obstacles!:
 	for x in range(38, 11, -6):
 		# Floor Tooth 1 - 8 (comes up to Y=30, spike at Y=29)
-		_build_floor_tooth(layer, x, 31, 2) 
+		_build_floor_tooth(layer, x, 31, 3) 
 		# Ceiling Tooth 1 - 8 (comes down to Y=28, spike at Y=29)
 		_build_ceiling_tooth(layer, x - 3, 25, 5)
 
@@ -210,11 +218,12 @@ func _build_spike_maze() -> void:
 
 
 	# Platform 5: X = 56..58 (Y = 20) - 8-tile gap!
-	_build_platform_composite(layer, 56, 58, 20)
+	_build_platform_composite(layer, 56, 59, 20)
 	_set_spike_left(layer, 55, 20)
 
 	# Exit Landing to Shaft 3: X = 66..68 (Y = 20)
-	_build_platform_composite(layer, 66, 68, 20)
+	_build_platform_composite(layer, 67, 69, 20)
+	_set_spike_left(layer, 66, 20)
 
 	# Ceiling spikes with solid blocks above them (no loose spikes in the air)
 	for sx in [18, 29, 40, 51, 62]:
@@ -230,10 +239,7 @@ func _build_spike_maze() -> void:
 
 	# Left wall at X = 69: NO BLOCKING SPIKES (Doorway into Floor 4 at Y=8 is OPEN!)
 	# Stepping stones climbing up to Floor 4
-	_build_platform_composite(layer, 71, 73, 16)
-	_build_platform_composite(layer, 73, 75, 13)
-	_build_platform_composite(layer, 70, 72, 10)
-	_build_platform_composite(layer, 72, 74, 7)
+	_build_platform_composite(layer, 72, 74, 15)
 
 	# =========================================================================
 	# 9. FLOOR 4: The Summit (Moving Right -> Left, Y = 3..13)
@@ -257,19 +263,20 @@ func _build_spike_maze() -> void:
 		
 
 	# Floating stepping platforms at Y = 8
-	_build_platform_composite(layer, 64, 64, 9)
-	_build_platform_composite(layer, 56, 56, 12)
-	_build_platform_composite(layer, 48, 48, 9)
-	_build_platform_composite(layer, 40, 40, 12)
-	_build_platform_composite(layer, 32, 32, 9)
-	_build_platform_composite(layer, 24, 24, 12)
-	_build_platform_composite(layer, 16, 16, 9) # Final launch platform!
+	_build_platform_composite(layer, 65, 65, 9)
+	_build_platform_composite(layer, 57, 57, 12)
+	_build_platform_composite(layer, 49, 49, 9)
+	_build_platform_composite(layer, 41, 41, 12)
+	_build_platform_composite(layer, 33, 33, 9)
+	_build_platform_composite(layer, 25, 25, 12)
+	_build_platform_composite(layer, 17, 17, 9) # Final launch platform!
 
 	# =========================================================================
 	# 10. GOAL SANCTUM (Upper-Left: X = 2..11, Y = 4..9)
 	# =========================================================================
 	# Pedestal floor
 	for x in range(3, 11):
+		_set_spike_up(layer, x, 8)
 		layer.set_cell(Vector2i(x, 9), 8, Vector2i(0, 0), 0) # Outter top
 	layer.set_cell(Vector2i(2, 9), 9, Vector2i(0, 0), 0)     # Corner TL
 
