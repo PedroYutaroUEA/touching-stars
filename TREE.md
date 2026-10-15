@@ -7,6 +7,7 @@ C:.
 |   AGENTS.md
 |   BOOTSTRAP.md
 |   CONTEXT.md
+|   default_bus_layout.tres
 |   icon.svg
 |   icon.svg.import
 |   PROGRESS.md
@@ -230,6 +231,10 @@ C:.
 |       level_04.tscn
 |       level_05.tscn
 |       level_06.tscn
+|       level_select.tscn
+|       main_menu.tscn
+|       pause_menu.tscn
+|       settings_menu.tscn
 |       
 +---scripts
 |       audio_manager.gd
@@ -238,6 +243,8 @@ C:.
 |       base_level.gd.uid
 |       comet.gd
 |       comet.gd.uid
+|       game_manager.gd
+|       game_manager.gd.uid
 |       hazard.gd
 |       hazard.gd.uid
 |       level_01.gd
@@ -252,10 +259,18 @@ C:.
 |       level_05.gd.uid
 |       level_06.gd
 |       level_06.gd.uid
+|       level_select.gd
+|       level_select.gd.uid
+|       main_menu.gd
+|       main_menu.gd.uid
 |       moving_text_platform.gd
 |       moving_text_platform.gd.uid
+|       pause_menu.gd
+|       pause_menu.gd.uid
 |       player.gd
 |       player.gd.uid
+|       settings_menu.gd
+|       settings_menu.gd.uid
 |       
 \---sprites
     +---player

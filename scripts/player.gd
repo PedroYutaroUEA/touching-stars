@@ -78,6 +78,8 @@ func _physics_process(delta: float) -> void:
 		_jump_buffer_timer = 0.0
 		_coyote_timer = 0.0
 		was_on_ice_when_jumped = is_on_ice
+		if AudioManager:
+			AudioManager.play_jump()
 
 	# Variable Jump Height (release jump to fall faster)
 	if Input.is_action_just_released("ui_up") and velocity.y < 0.0:

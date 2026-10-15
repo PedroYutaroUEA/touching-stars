@@ -11,13 +11,22 @@ extends Node2D
 var _player_instance: Player = null
 var _comet_instance: Comet = null
 var _level_cleared: bool = false
+var _all_levels_completed: bool = false
 var _player_scene: PackedScene = preload("res://entities/player.tscn")
 var _comet_scene: PackedScene = preload("res://entities/comet.tscn")
+var _pause_menu_scene: PackedScene = preload("res://scenes/pause_menu.tscn")
+var _pause_menu_instance: PauseMenu = null
 
 func _ready() -> void:
 	level_clear_label.hide()
 	_spawn_player()
 	_spawn_comet()
+	_setup_pause_menu()
+
+func _setup_pause_menu() -> void:
+	if ui_layer and _pause_menu_scene:
+		_pause_menu_instance = _pause_menu_scene.instantiate() as PauseMenu
+		ui_layer.add_child(_pause_menu_instance)
 
 func _spawn_comet() -> void:
 	if comet_point:
@@ -42,11 +51,13 @@ func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("restart_level") and not _level_cleared:
 		_reload_level()
 		
-	# Proceed to next level if cleared
+	# Proceed to next level or return to level selector if cleared
 	if _level_cleared and Input.is_action_just_pressed("jump"):
 		_go_to_next_level()
 
 func _on_player_died() -> void:
+	if AudioManager:
+		AudioManager.play_death()
 	# Pausa curta (0.4s) antes de recarregar
 	await get_tree().create_timer(0.4).timeout
 	_reload_level()
@@ -64,26 +75,40 @@ func on_comet_touched() -> void:
 	if is_instance_valid(_player_instance):
 		_player_instance.set_physics_process(false)
 		
+	if AudioManager:
+		AudioManager.play_win()
+		
+	# Unlock next level in progression save
+	var current_path: String = scene_file_path
+	var regex := RegEx.new()
+	regex.compile("level_(\\d+)")
+	var match := regex.search(current_path)
+	if match and GameManager:
+		var current_num := int(match.get_string(1))
+		GameManager.unlock_level(current_num + 1)
+		
 	level_clear_label.show()
 
 func _go_to_next_level() -> void:
-	var current_path = get_tree().current_scene.scene_file_path
-	# Ex: res://scenes/level_01.tscn -> res://scenes/level_02.tscn
-	var regex = RegEx.new()
+	if _all_levels_completed:
+		get_tree().change_scene_to_file("res://scenes/level_select.tscn")
+		return
+
+	var current_path: String = scene_file_path
+	var regex := RegEx.new()
 	regex.compile("level_(\\d+)")
-	var match = regex.search(current_path)
+	var match := regex.search(current_path)
 	
 	if match:
-		var current_num = int(match.get_string(1))
-		var next_num = current_num + 1
-		# Format as 2 digits
-		var next_name = "level_%02d" % next_num
-		var next_path = current_path.replace("level_%02d" % current_num, next_name)
+		var current_num := int(match.get_string(1))
+		var next_num := current_num + 1
+		var next_name := "level_%02d" % next_num
+		var next_path := current_path.replace("level_%02d" % current_num, next_name)
 		
 		if ResourceLoader.exists(next_path):
 			get_tree().change_scene_to_file(next_path)
 		else:
-			print("Próximo nível não encontrado: ", next_path)
-			level_clear_label.text = "YOU BEAT THE GAME!"
+			level_clear_label.text = "PARABÉNS!\nVOCÊ COMPLETOU TODAS AS FASES DISPONÍVEIS!\nPressione PULO para voltar ao Seletor de Fases"
+			_all_levels_completed = true
 	else:
-		print("Nome do nível atual não segue o padrão 'level_XX'")
+		get_tree().change_scene_to_file("res://scenes/level_select.tscn")
