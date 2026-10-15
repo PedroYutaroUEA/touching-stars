@@ -229,6 +229,7 @@ C:.
 |       level_03.tscn
 |       level_04.tscn
 |       level_05.tscn
+|       level_06.tscn
 |       
 +---scripts
 |       audio_manager.gd
@@ -249,6 +250,8 @@ C:.
 |       level_04.gd.uid
 |       level_05.gd
 |       level_05.gd.uid
+|       level_06.gd
+|       level_06.gd.uid
 |       moving_text_platform.gd
 |       moving_text_platform.gd.uid
 |       player.gd

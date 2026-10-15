@@ -18,4 +18,8 @@
   - [x] Refactor player hazard detection to check exact spike Rect2 intersection, preventing false deaths on platform corners and wall descents
   - [x] Create scripts/level_05.gd and scenes/level_05.tscn with intense maze layout (IWBTG / Every End style)
   - [x] Verify scene progression and syntax
-- [ ] Level 06: Saturn gravity (Heavy gravity (250%); extremely short jumps)
+- [x] Level 06: Saturn gravity (Heavy gravity (250%); extremely short jumps)
+  - [x] Align requirements and physics edge cases via Grill-Me questionnaire
+  - [x] Implement 4-tier vertical descent ("cima para baixo") in scripts/level_06.gd and scenes/level_06.tscn
+  - [x] Configure heavy gravity multiplier (2.5x) with low ceiling drops, lateral shaft spikes, and base pedestal goal
+  - [x] Verify scene progression and syntax
