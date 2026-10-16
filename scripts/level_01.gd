@@ -2,6 +2,7 @@ class_name Level01
 extends BaseLevel
 
 func _ready() -> void:
+	level_theme_color = Color(1.0, 0.55, 0.2, 1.0)
 	super._ready()
 	_build_pillars()
 	_build_lava()

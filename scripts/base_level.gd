@@ -1,12 +1,21 @@
 class_name BaseLevel
 extends Node2D
 
+@export_group("Physics")
 @export var level_gravity_multiplier: float = 1.0
+
+@export_group("Environment & Theme")
+@export var level_theme_color: Color = Color(0.75, 0.85, 1.0, 1.0)
+@export var has_lava_particles: bool = false
+@export var has_ice_particles: bool = false
 
 @onready var spawn_point: Marker2D = $SpawnPoint
 @onready var comet_point: Marker2D = $CometPoint
 @onready var ui_layer: CanvasLayer = $UILayer
 @onready var level_clear_label: Label = $UILayer/LevelClearLabel
+@onready var background_stars: CPUParticles2D = $BackgroundLayer/BackgroundStars
+@onready var lava_particles: CPUParticles2D = $LavaParticles
+@onready var ice_particles: CPUParticles2D = $IceParticles
 
 var _player_instance: Player = null
 var _comet_instance: Comet = null
@@ -22,6 +31,34 @@ func _ready() -> void:
 	_spawn_player()
 	_spawn_comet()
 	_setup_pause_menu()
+	call_deferred("_setup_environment_particles")
+
+func _setup_environment_particles() -> void:
+	if background_stars:
+		background_stars.modulate = level_theme_color
+
+	var layer: TileMapLayer = get_node_or_null("TileMapLayer") as TileMapLayer
+	var found_lava: bool = has_lava_particles
+	var found_ice: bool = has_ice_particles
+
+	if layer and (not found_lava or not found_ice):
+		for cell in layer.get_used_cells():
+			var src: int = layer.get_cell_source_id(cell)
+			if src == 5: # Lava
+				found_lava = true
+			elif src == 7: # Ice
+				found_ice = true
+			if found_lava and found_ice:
+				break
+
+	if lava_particles:
+		lava_particles.emitting = found_lava
+		lava_particles.visible = found_lava
+
+	if ice_particles:
+		ice_particles.emitting = found_ice
+		ice_particles.visible = found_ice
+
 
 func _setup_pause_menu() -> void:
 	if ui_layer and _pause_menu_scene:

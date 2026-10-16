@@ -33,3 +33,5 @@
 - [x] Settings Menu with Godot Audio Buses (Master, Music, SFX), interactive volume sliders and test sound
 - [x] Translucent Pause Menu window (triggered by Esc) with Resume, Restart, Settings, and Main Menu options
 - [x] GameManager autoload for level progress unlocking and audio persistence (user://save.cfg)
+- [x] Player movement particles (Geometry Dash trail puffs when running + impact burst when landing on platforms)
+- [x] Ambient environment particles (smoothly pulsating static background stars matching level themes, sporadic lava splashes, and ice mist/glitter)

@@ -7,6 +7,7 @@ const FLIP_V = 1 << 13
 const TRANSPOSE = 1 << 14
 
 func _ready() -> void:
+	level_theme_color = Color(1.0, 0.78, 0.3, 1.0)
 	super._ready()
 	_build_saturn_descent()
 

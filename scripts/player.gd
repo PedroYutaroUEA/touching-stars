@@ -5,6 +5,8 @@ signal player_died
 
 @onready var sprite: Sprite2D = $Visual
 @onready var death_particles: CPUParticles2D = $DeathParticles
+@onready var run_particles: CPUParticles2D = $RunParticles
+@onready var land_particles: CPUParticles2D = $LandParticles
 
 @export_group("Movement")
 @export var max_speed: float = 300.0
@@ -29,6 +31,7 @@ var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 var _coyote_timer: float = 0.0
 var _jump_buffer_timer: float = 0.0
+var _was_on_floor: bool = false
 
 var is_on_ice: bool = false
 var was_on_ice_when_jumped: bool = false
@@ -54,6 +57,7 @@ func _physics_process(delta: float) -> void:
 	var direction: float = Input.get_axis("ui_left", "ui_right")
 	if direction != 0.0:
 		velocity.x = move_toward(velocity.x, direction * max_speed, current_accel * delta)
+		sprite.flip_h = direction < 0.0
 	else:
 		velocity.x = move_toward(velocity.x, 0.0, current_friction * delta)
 
@@ -85,8 +89,11 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_released("ui_up") and velocity.y < 0.0:
 		velocity.y *= 0.5
 
+	var prev_vy: float = velocity.y
 	move_and_slide()
 	_check_hazards_and_surface()
+	_handle_movement_particles(prev_vy)
+	_was_on_floor = is_on_floor()
 
 func _get_player_world_rect() -> Rect2:
 	# 16x16 player bounding box centered at (0, -8) relative to global_position
@@ -182,6 +189,35 @@ func _check_hazards_and_surface() -> void:
 				is_on_ice = true
 				return
 
+func _handle_movement_particles(fall_speed: float) -> void:
+	if not run_particles or not land_particles:
+		return
+
+	# 1. Landing particles (Geometry Dash impact burst on touching floor)
+	if is_on_floor() and not _was_on_floor:
+		if fall_speed > 60.0:
+			if is_on_ice:
+				land_particles.color = Color(0.65, 0.92, 1.0, 0.85)
+			else:
+				land_particles.color = Color(0.92, 0.98, 1.0, 0.8)
+			land_particles.restart()
+			land_particles.emitting = true
+
+	# 2. Running particles (Geometry Dash trail puffs emitted behind feet)
+	if is_on_floor() and abs(velocity.x) > 30.0:
+		run_particles.emitting = true
+		if velocity.x > 0.0:
+			run_particles.direction = Vector2(-1.0, -0.3)
+		else:
+			run_particles.direction = Vector2(1.0, -0.3)
+
+		if is_on_ice:
+			run_particles.color = Color(0.65, 0.9, 1.0, 0.75) # Icy skid dust
+		else:
+			run_particles.color = Color(0.88, 0.95, 1.0, 0.6) # Standard GD dust puff
+	else:
+		run_particles.emitting = false
+
 func die() -> void:
 	if not is_physics_processing():
 		return # Already dead
@@ -191,5 +227,8 @@ func die() -> void:
 	set_physics_process(false)
 
 	# Visual feedback
+	if run_particles:
+		run_particles.emitting = false
 	sprite.hide()
 	death_particles.emitting = true
+

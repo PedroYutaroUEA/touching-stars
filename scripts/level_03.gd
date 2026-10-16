@@ -4,6 +4,7 @@ extends BaseLevel
 const PLATFORM_SCENE = preload("res://entities/moving_text_platform.tscn")
 
 func _ready() -> void:
+	level_theme_color = Color(0.8, 0.5, 1.0, 1.0)
 	super._ready()
 	_spawn_platforms()
 	_build_floor()

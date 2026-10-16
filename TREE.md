@@ -246,6 +246,7 @@ C:.
 |       comet.gd
 |       comet.gd.uid
 |       controls_modal.gd
+|       controls_modal.gd.uid
 |       game_manager.gd
 |       game_manager.gd.uid
 |       hazard.gd
@@ -306,5 +307,7 @@ C:.
     |       
     \---ui
             icon_github.svg
+            icon_github.svg.import
             icon_help.svg
+            icon_help.svg.import
             
