@@ -19,9 +19,10 @@ func _ready() -> void:
 	menu_btn.pressed.connect(_on_menu_pressed)
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_just_pressed("pause"):
+	if event.is_action_pressed("pause") and not event.is_echo():
 		if settings_menu and settings_menu.visible:
 			settings_menu.hide()
+			get_viewport().set_input_as_handled()
 			return
 			
 		if visible:
