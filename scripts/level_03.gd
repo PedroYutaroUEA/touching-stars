@@ -68,6 +68,7 @@ func _add_platform(txt: String, p_type: int, start_pos: Vector2, offset: Vector2
 	p.global_position = start_pos
 	p.target_offset = offset
 	p.move_duration = duration
+	p.fontsize = 24
 	add_child(p)
 
 func _add_rect_cells(cells: Array[Vector2i], start_x: int, start_y: int, w: int, h: int) -> void:

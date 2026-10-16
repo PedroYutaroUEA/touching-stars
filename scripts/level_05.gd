@@ -1,13 +1,15 @@
 class_name Level05
 extends BaseLevel
 
+const PLATFORM_SCENE = preload("res://entities/moving_text_platform.tscn")
+
 # Base tile flags provided by Godot
 const FLIP_H = 1 << 12
 const FLIP_V = 1 << 13
 const TRANSPOSE = 1 << 14
 
 func _ready() -> void:
-	level_theme_color = Color(0.98, 0.35, 0.5, 1.0)
+	level_theme_color = Color(0.25, 0.75, 1.0, 1.0)
 	super._ready()
 	_build_spike_maze()
 
@@ -92,10 +94,10 @@ func _build_spike_maze() -> void:
 
 	# Platform 6: X = 43..46
 	_set_spike_down(layer, 42, 36)
-	#_set_spike_left(layer, 42, 40)
+	_set_spike_left(layer, 42, 40)
 	_build_platform_composite(layer, 43, 46, 40)
 	_set_spike_up(layer, 45, 39)
-	#_set_spike_right(layer, 47, 40)
+	_set_spike_right(layer, 47, 40)
 	_set_spike_down(layer, 47, 36)
 
 	# Platform 7: X = 51..54
@@ -106,6 +108,8 @@ func _build_spike_maze() -> void:
 	# Platform 8 (Lead into Shaft 1): X = 59..68
 	_set_spike_left(layer, 58, 40)
 	_build_platform_composite(layer, 59, 68, 40)
+	_set_spike_up(layer, 63, 39)
+	_set_spike_down(layer, 63, 36)
 	_set_spike_right(layer, 69, 40)
 	
 	# Ceiling spikes under Divider 1 to force controlled hops
@@ -128,10 +132,15 @@ func _build_spike_maze() -> void:
 	_set_spike_left(layer, 72, 38)
 	_build_platform_composite(layer, 73, 75, 38)
 	_set_spike_up(layer, 75, 37)
+	
 	_build_platform_composite(layer, 70, 72, 35)
 	_build_platform_composite(layer, 73, 75, 32)
 	_build_platform_composite(layer, 70, 72, 29)
+	_set_spike_down(layer, 70, 30)
+	_set_spike_down(layer, 72, 30)
 	_build_platform_composite(layer, 73, 75, 26)
+	_set_spike_down(layer, 73, 27)
+	_set_spike_down(layer, 75, 27)
 
 	# =========================================================================
 	# 5. FLOOR 2: The "Zipper" (Sobe e Desce Apertado, Y = 25..33, Moving R -> L)
@@ -198,38 +207,29 @@ func _build_spike_maze() -> void:
 	# =========================================================================
 	# Bed of spikes moved 1 block down to Y = 23 (more vertical breathing room)
 	for x in range(11, 78):
+		if x < 69 and x % 2 != 0:
+			_set_spike_down(layer, x, 16)
 		_set_spike_up(layer, x, 23)
 
-	# ONLY 5 Challenging Platforms across the entire span:
-	# Platform 1: Landing at X = 11..14 (Y = 20)
-	_build_platform_composite(layer, 12, 15, 20)
-	_set_spike_left(layer, 11, 20)
-	# Platform 2: X = 23..25 (Y = 20) - 8-tile gap!
-	_build_platform_composite(layer, 23, 26, 20)
-	_set_spike_left(layer, 22, 20)
+	# ONLY 10 Challenging Moving Platforms across the entire span:
+	# Platform Group 1: Landing at X = 11..14 (Y = 20)
+	_add_moving_platform("SECURE", 0, Vector2(250, 280), Vector2(0, 90), 1.50, 14)
+	_add_moving_platform("UNSAFE", 1, Vector2(350, 370), Vector2(0, -90), 1.25, 16)
+	
+	# Platform Group 2: X = 23..25 (Y = 20) - 8-tile gap!
+	_add_moving_platform("SECURE", 0, Vector2(450, 280), Vector2(0, 90), 1.50, 14)
+	_add_moving_platform("SECURE", 0, Vector2(550, 370), Vector2(0, -90), 1.50, 14)
+	# Platform Group 3: X = 34..36 (Y = 20) - 8-tile gap!
+	_add_moving_platform("UNSAFE", 1, Vector2(650, 280), Vector2(0, 90), 1.25, 16)
+	_add_moving_platform("SECURE", 0, Vector2(750, 370), Vector2(0, -90), 1.50, 14)
 
-	# Platform 3: X = 34..36 (Y = 20) - 8-tile gap!
-	_build_platform_composite(layer, 34, 37, 20)
-	_set_spike_left(layer, 33, 20)
+	# Platform Group 4: X = 45..47 (Y = 20) - 8-tile gap!
+	_add_moving_platform("SECURE", 0, Vector2(850, 280), Vector2(0, 90), 1.50, 14)
+	_add_moving_platform("SECURE", 1, Vector2(950, 370), Vector2(0, -90), 1.25, 16)
 
-
-	# Platform 4: X = 45..47 (Y = 20) - 8-tile gap!
-	_build_platform_composite(layer, 45, 48, 20)
-	_set_spike_left(layer, 44, 20)
-
-
-	# Platform 5: X = 56..58 (Y = 20) - 8-tile gap!
-	_build_platform_composite(layer, 56, 59, 20)
-	_set_spike_left(layer, 55, 20)
-
-	# Exit Landing to Shaft 3: X = 66..68 (Y = 20)
-	_build_platform_composite(layer, 67, 69, 20)
-	_set_spike_left(layer, 66, 20)
-
-	# Ceiling spikes with solid blocks above them (no loose spikes in the air)
-	for sx in [18, 29, 40, 51, 62]:
-		layer.set_cell(Vector2i(sx, 15), 4, Vector2i(0, 0), 0)
-		_set_spike_down(layer, sx, 16)
+	# Platform Group 5: X = 56..58 (Y = 20) - 8-tile gap!
+	_add_moving_platform("SECURE", 0, Vector2(1050, 280), Vector2(0, 90), 1.50, 14)
+	_add_moving_platform("UNSAFE", 0, Vector2(1150, 370), Vector2(0, -90), 1.25, 14)
 
 	# =========================================================================
 	# 8. SHAFT 3: Vertical Climb (Right Side: X = 69..77, Y = 4..19)
@@ -241,6 +241,9 @@ func _build_spike_maze() -> void:
 	# Left wall at X = 69: NO BLOCKING SPIKES (Doorway into Floor 4 at Y=8 is OPEN!)
 	# Stepping stones climbing up to Floor 4
 	_build_platform_composite(layer, 72, 74, 15)
+	_set_spike_down(layer, 72, 16)
+	_set_spike_down(layer, 73, 16)
+	_set_spike_down(layer, 74, 16)
 
 	# =========================================================================
 	# 9. FLOOR 4: The Summit (Moving Right -> Left, Y = 3..13)
@@ -265,11 +268,14 @@ func _build_spike_maze() -> void:
 
 	# Floating stepping platforms at Y = 8
 	_build_platform_composite(layer, 65, 65, 9)
-	_build_platform_composite(layer, 57, 57, 12)
+	_set_spike_up(layer, 58, 11)
+	_build_platform_composite(layer, 56, 58, 12)
 	_build_platform_composite(layer, 49, 49, 9)
-	_build_platform_composite(layer, 41, 41, 12)
+	_set_spike_up(layer, 40, 11)
+	_build_platform_composite(layer, 40, 42, 12)
 	_build_platform_composite(layer, 33, 33, 9)
-	_build_platform_composite(layer, 25, 25, 12)
+	_set_spike_up(layer, 25, 11)
+	_build_platform_composite(layer, 24, 26, 12)
 	_build_platform_composite(layer, 17, 17, 9) # Final launch platform!
 
 	# =========================================================================
@@ -278,6 +284,7 @@ func _build_spike_maze() -> void:
 	# Pedestal floor
 	for x in range(3, 11):
 		_set_spike_up(layer, x, 8)
+		_set_spike_down(layer, x, 4)
 		layer.set_cell(Vector2i(x, 9), 8, Vector2i(0, 0), 0) # Outter top
 	layer.set_cell(Vector2i(2, 9), 9, Vector2i(0, 0), 0)     # Corner TL
 
@@ -309,6 +316,19 @@ func _set_spike_left(layer: TileMapLayer, x: int, y: int) -> void:
 func _set_spike_right(layer: TileMapLayer, x: int, y: int) -> void:
 	# Flip H + Transpose = Clockwise rotation
 	layer.set_cell(Vector2i(x, y), 6, Vector2i(0, 0), FLIP_H | TRANSPOSE)
+
+func _add_moving_platform(txt: String, p_type: int, start_pos: Vector2, offset: Vector2, duration: float, fs: int) -> void:
+	var p = PLATFORM_SCENE.instantiate()
+	p.text = txt
+	p.platform_type = p_type
+	p.global_position = start_pos
+	p.target_offset = offset
+	p.move_duration = duration
+	if fs <= 0:
+		p.fontsize = 16
+	else:
+		p.fontsize = fs
+	add_child(p)
 
 func _build_divider(layer: TileMapLayer, start_x: int, end_x: int, y: int) -> void:
 	for x in range(start_x, end_x + 1):

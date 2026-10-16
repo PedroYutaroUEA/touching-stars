@@ -12,6 +12,8 @@ enum PlatformType {
 @export var target_offset: Vector2 = Vector2(100, 0)
 @export var move_duration: float = 2.0
 
+@export var fontsize: int = 24
+
 @onready var label: Label = $Label
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
 @onready var hazard_area: Area2D = $HazardArea
@@ -30,7 +32,7 @@ func _ready() -> void:
 	label.text = text
 	
 	# Adjust font size to 24 (1.5x player height of 16)
-	label.add_theme_font_size_override("font_size", 24)
+	label.add_theme_font_size_override("font_size", fontsize)
 	
 	# Compute actual text size to dynamically adjust collision boxes
 	var font = label.get_theme_font("font")
