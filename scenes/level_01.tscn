@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://d1g0b2k5naq80" path="res://scenes/base_level.tscn" id="1_base"]
 [ext_resource type="Script" uid="uid://c1r68acoexg3s" path="res://scripts/level_01.gd" id="2_script"]
 [ext_resource type="PackedScene" uid="uid://ha0ard12345" path="res://entities/hazard.tscn" id="3_hazard"]
+[ext_resource type="PackedScene" uid="uid://controls_hint_scene" path="res://scenes/controls_hint.tscn" id="4_hints"]
 
 [node name="Level01" unique_id=168200847 instance=ExtResource("1_base")]
 script = ExtResource("2_script")
@@ -19,3 +20,5 @@ visible = true
 [node name="LavaFloor" parent="." index="6" unique_id=1788568479 instance=ExtResource("3_hazard")]
 position = Vector2(640, 704)
 scale = Vector2(200, 5)
+
+[node name="ControlsHint" parent="." index="7" instance=ExtResource("4_hints")]

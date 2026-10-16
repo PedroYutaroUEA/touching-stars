@@ -1,0 +1,291 @@
+[gd_scene format=3 uid="uid://controls_hint_scene"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hint_box"]
+bg_color = Color(0.06, 0.08, 0.14, 0.7)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.3, 0.6, 0.85, 0.45)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_key"]
+bg_color = Color(0.14, 0.2, 0.32, 0.85)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 2
+border_color = Color(0.4, 0.8, 1, 0.75)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="ControlsHint" type="Control"]
+z_index = -1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="MoveHint" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 390.0
+offset_right = 210.0
+offset_bottom = 475.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_hint_box")
+
+[node name="Margin" type="MarginContainer" parent="MoveHint"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 8
+
+[node name="VBox" type="VBoxContainer" parent="MoveHint/Margin"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 4
+alignment = 1
+
+[node name="Keys" type="HBoxContainer" parent="MoveHint/Margin/VBox"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 4
+alignment = 1
+
+[node name="KeyA" type="Label" parent="MoveHint/Margin/VBox/Keys"]
+custom_minimum_size = Vector2(26, 26)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.5, 0.9, 1, 1)
+theme_override_font_sizes/font_size = 14
+theme_override_styles/normal = SubResource("StyleBoxFlat_key")
+text = "A"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="KeyD" type="Label" parent="MoveHint/Margin/VBox/Keys"]
+custom_minimum_size = Vector2(26, 26)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.5, 0.9, 1, 1)
+theme_override_font_sizes/font_size = 14
+theme_override_styles/normal = SubResource("StyleBoxFlat_key")
+text = "D"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Or" type="Label" parent="MoveHint/Margin/VBox/Keys"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.6, 0.7, 0.8, 0.8)
+theme_override_font_sizes/font_size = 11
+text = "/"
+
+[node name="KeyLeft" type="Label" parent="MoveHint/Margin/VBox/Keys"]
+custom_minimum_size = Vector2(26, 26)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.5, 0.9, 1, 1)
+theme_override_font_sizes/font_size = 14
+theme_override_styles/normal = SubResource("StyleBoxFlat_key")
+text = "◄"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="KeyRight" type="Label" parent="MoveHint/Margin/VBox/Keys"]
+custom_minimum_size = Vector2(26, 26)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.5, 0.9, 1, 1)
+theme_override_font_sizes/font_size = 14
+theme_override_styles/normal = SubResource("StyleBoxFlat_key")
+text = "►"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="MoveHint/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.85, 0.9, 0.98, 0.9)
+theme_override_font_sizes/font_size = 13
+text = "ANDAR"
+horizontal_alignment = 1
+
+[node name="JumpHint" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_left = 240.0
+offset_top = 400.0
+offset_right = 430.0
+offset_bottom = 490.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_hint_box")
+
+[node name="Margin" type="MarginContainer" parent="JumpHint"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 8
+
+[node name="VBox" type="VBoxContainer" parent="JumpHint/Margin"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 4
+alignment = 1
+
+[node name="Keys" type="HBoxContainer" parent="JumpHint/Margin/VBox"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 4
+alignment = 1
+
+[node name="KeyW" type="Label" parent="JumpHint/Margin/VBox/Keys"]
+custom_minimum_size = Vector2(26, 26)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.5, 0.9, 1, 1)
+theme_override_font_sizes/font_size = 14
+theme_override_styles/normal = SubResource("StyleBoxFlat_key")
+text = "W"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="KeySpace" type="Label" parent="JumpHint/Margin/VBox/Keys"]
+custom_minimum_size = Vector2(56, 26)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.5, 0.9, 1, 1)
+theme_override_font_sizes/font_size = 12
+theme_override_styles/normal = SubResource("StyleBoxFlat_key")
+text = "Espaço"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Or" type="Label" parent="JumpHint/Margin/VBox/Keys"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.6, 0.7, 0.8, 0.8)
+theme_override_font_sizes/font_size = 11
+text = "/"
+
+[node name="KeyUp" type="Label" parent="JumpHint/Margin/VBox/Keys"]
+custom_minimum_size = Vector2(26, 26)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.5, 0.9, 1, 1)
+theme_override_font_sizes/font_size = 14
+theme_override_styles/normal = SubResource("StyleBoxFlat_key")
+text = "▲"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="JumpHint/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.85, 0.9, 0.98, 0.9)
+theme_override_font_sizes/font_size = 12
+text = "PULAR (Segure p/ alto)"
+horizontal_alignment = 1
+
+[node name="SystemHint" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_left = 490.0
+offset_top = 160.0
+offset_right = 790.0
+offset_bottom = 236.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_hint_box")
+
+[node name="Margin" type="MarginContainer" parent="SystemHint"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 8
+
+[node name="HBox" type="HBoxContainer" parent="SystemHint/Margin"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="ResetGroup" type="HBoxContainer" parent="SystemHint/Margin/HBox"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 6
+
+[node name="KeyR" type="Label" parent="SystemHint/Margin/HBox/ResetGroup"]
+custom_minimum_size = Vector2(26, 26)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.5, 0.9, 1, 1)
+theme_override_font_sizes/font_size = 14
+theme_override_styles/normal = SubResource("StyleBoxFlat_key")
+text = "R"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="SystemHint/Margin/HBox/ResetGroup"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.85, 0.9, 0.98, 0.9)
+theme_override_font_sizes/font_size = 12
+text = "Reinício Rápido"
+
+[node name="PauseGroup" type="HBoxContainer" parent="SystemHint/Margin/HBox"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 6
+
+[node name="KeyEsc" type="Label" parent="SystemHint/Margin/HBox/PauseGroup"]
+custom_minimum_size = Vector2(36, 26)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.5, 0.9, 1, 1)
+theme_override_font_sizes/font_size = 13
+theme_override_styles/normal = SubResource("StyleBoxFlat_key")
+text = "Esc"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="SystemHint/Margin/HBox/PauseGroup"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.85, 0.9, 0.98, 0.9)
+theme_override_font_sizes/font_size = 12
+text = "Pausa / Opções"
+
+[node name="GoalHint" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_left = 1060.0
+offset_top = 400.0
+offset_right = 1240.0
+offset_bottom = 475.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_hint_box")
+
+[node name="Margin" type="MarginContainer" parent="GoalHint"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 8
+
+[node name="VBox" type="VBoxContainer" parent="GoalHint/Margin"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 4
+alignment = 1
+
+[node name="StarIcon" type="Label" parent="GoalHint/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.88, 0.35, 1)
+theme_override_font_sizes/font_size = 18
+text = "★ OBJETIVO"
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="GoalHint/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.85, 0.9, 0.98, 0.9)
+theme_override_font_sizes/font_size = 12
+text = "Pise no Cometa!"
+horizontal_alignment = 1

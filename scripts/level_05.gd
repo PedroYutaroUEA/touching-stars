@@ -7,6 +7,7 @@ const FLIP_V = 1 << 13
 const TRANSPOSE = 1 << 14
 
 func _ready() -> void:
+	level_theme_color = Color(0.98, 0.35, 0.5, 1.0)
 	super._ready()
 	_build_spike_maze()
 

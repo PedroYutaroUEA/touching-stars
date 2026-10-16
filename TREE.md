@@ -7,6 +7,7 @@ C:.
 |   AGENTS.md
 |   BOOTSTRAP.md
 |   CONTEXT.md
+|   default_bus_layout.tres
 |   icon.svg
 |   icon.svg.import
 |   PROGRESS.md
@@ -223,6 +224,8 @@ C:.
 +---scenes
 |       audio_manager.tscn
 |       base_level.tscn
+|       controls_hint.tscn
+|       controls_modal.tscn
 |       game.tscn
 |       level_01.tscn
 |       level_02.tscn
@@ -230,6 +233,11 @@ C:.
 |       level_04.tscn
 |       level_05.tscn
 |       level_06.tscn
+|       level_complete_modal.tscn
+|       level_select.tscn
+|       main_menu.tscn
+|       pause_menu.tscn
+|       settings_menu.tscn
 |       
 +---scripts
 |       audio_manager.gd
@@ -238,6 +246,10 @@ C:.
 |       base_level.gd.uid
 |       comet.gd
 |       comet.gd.uid
+|       controls_modal.gd
+|       controls_modal.gd.uid
+|       game_manager.gd
+|       game_manager.gd.uid
 |       hazard.gd
 |       hazard.gd.uid
 |       level_01.gd
@@ -252,10 +264,19 @@ C:.
 |       level_05.gd.uid
 |       level_06.gd
 |       level_06.gd.uid
+|       level_complete_modal.gd
+|       level_select.gd
+|       level_select.gd.uid
+|       main_menu.gd
+|       main_menu.gd.uid
 |       moving_text_platform.gd
 |       moving_text_platform.gd.uid
+|       pause_menu.gd
+|       pause_menu.gd.uid
 |       player.gd
 |       player.gd.uid
+|       settings_menu.gd
+|       settings_menu.gd.uid
 |       
 \---sprites
     +---player
@@ -266,23 +287,29 @@ C:.
     |       comet.svg
     |       comet.svg.import
     |       
-    \---tilesets
-            tileset_base.svg
-            tileset_base.svg.import
-            tileset_broken-station-block.svg
-            tileset_broken-station-block.svg.import
-            tileset_broken-station-corner.svg
-            tileset_broken-station-corner.svg.import
-            tileset_broken-station-filling.svg
-            tileset_broken-station-filling.svg.import
-            tileset_broken-station-outter.svg
-            tileset_broken-station-outter.svg.import
-            tileset_ice.svg
-            tileset_ice.svg.import
-            tileset_lava.svg
-            tileset_lava.svg.import
-            tileset_moon.svg
-            tileset_moon.svg.import
-            tileset_spike.svg
-            tileset_spike.svg.import
+    +---tilesets
+    |       tileset_base.svg
+    |       tileset_base.svg.import
+    |       tileset_broken-station-block.svg
+    |       tileset_broken-station-block.svg.import
+    |       tileset_broken-station-corner.svg
+    |       tileset_broken-station-corner.svg.import
+    |       tileset_broken-station-filling.svg
+    |       tileset_broken-station-filling.svg.import
+    |       tileset_broken-station-outter.svg
+    |       tileset_broken-station-outter.svg.import
+    |       tileset_ice.svg
+    |       tileset_ice.svg.import
+    |       tileset_lava.svg
+    |       tileset_lava.svg.import
+    |       tileset_moon.svg
+    |       tileset_moon.svg.import
+    |       tileset_spike.svg
+    |       tileset_spike.svg.import
+    |       
+    \---ui
+            icon_github.svg
+            icon_github.svg.import
+            icon_help.svg
+            icon_help.svg.import
             

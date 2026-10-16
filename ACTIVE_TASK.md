@@ -23,3 +23,16 @@
   - [x] Implement 4-tier vertical descent ("cima para baixo") in scripts/level_06.gd and scenes/level_06.tscn
   - [x] Configure heavy gravity multiplier (2.5x) with low ceiling drops, lateral shaft spikes, and base pedestal goal
   - [x] Verify scene progression and syntax
+
+## Current Phase: Phase 5 - Presentation, Game Screens Workflow & Polish
+### Block 5: Game Screens & Navigation
+- [x] Startpage (Main Menu) with options: JOGAR (Start), CONFIGURAÇÕES (Settings), SAIR (Exit)
+- [x] Helper & GitHub round buttons on Main Menu with controls modal dialog and link to GitHub profile
+- [x] In-game visual and descriptive floating controls tutorial in Level 01
+- [x] Simple unlockable Level Selector (Alien Escape trail style) with connected path, locks, and Back button
+- [x] Settings Menu with Godot Audio Buses (Master, Music, SFX), interactive volume sliders and test sound
+- [x] Translucent Pause Menu window (triggered by Esc) with Resume, Restart, Settings, and Main Menu options
+- [x] GameManager autoload for level progress unlocking and audio persistence (user://save.cfg)
+- [x] Player movement particles (Geometry Dash trail puffs when running + impact burst when landing on platforms)
+- [x] Ambient environment particles (smoothly pulsating static background stars matching level themes, sporadic lava splashes, and ice mist/glitter)
+- [x] Floating Level Complete modal (Geometry Dash style) showing run time, session attempts, personal best attempts persistence, jump counter, and actions: Replay, Next Level, and Level Select
