@@ -233,6 +233,7 @@ C:.
 |       level_04.tscn
 |       level_05.tscn
 |       level_06.tscn
+|       level_complete_modal.tscn
 |       level_select.tscn
 |       main_menu.tscn
 |       pause_menu.tscn
@@ -263,6 +264,7 @@ C:.
 |       level_05.gd.uid
 |       level_06.gd
 |       level_06.gd.uid
+|       level_complete_modal.gd
 |       level_select.gd
 |       level_select.gd.uid
 |       main_menu.gd

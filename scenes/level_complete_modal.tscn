@@ -1,0 +1,281 @@
+[gd_scene format=3 uid="uid://lvl_complete_modal_scene"]
+
+[ext_resource type="Script" path="res://scripts/level_complete_modal.gd" id="1_script"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_card"]
+bg_color = Color(0.06, 0.08, 0.14, 0.96)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.35, 0.8, 1, 0.9)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
+shadow_color = Color(0, 0, 0, 0.7)
+shadow_size = 24
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_stats_panel"]
+bg_color = Color(0.1, 0.14, 0.22, 0.75)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.25, 0.5, 0.8, 0.45)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btn_primary"]
+bg_color = Color(0.14, 0.48, 0.8, 0.95)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.5, 0.92, 1, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btn_primary_hover"]
+bg_color = Color(0.22, 0.6, 0.95, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.8, 0.98, 1, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btn_secondary"]
+bg_color = Color(0.12, 0.16, 0.25, 0.9)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.35, 0.6, 0.85, 0.5)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btn_secondary_hover"]
+bg_color = Color(0.18, 0.26, 0.4, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.5, 0.85, 1, 0.9)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btn_disabled"]
+bg_color = Color(0.08, 0.1, 0.15, 0.6)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.25, 0.3, 0.4, 0.35)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="LevelCompleteModal" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_script")
+
+[node name="BackgroundDim" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.02, 0.03, 0.06, 0.65)
+
+[node name="Center" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Card" type="PanelContainer" parent="Center"]
+custom_minimum_size = Vector2(520, 460)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_card")
+
+[node name="Margin" type="MarginContainer" parent="Center/Card"]
+layout_mode = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 28
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 26
+
+[node name="VBox" type="VBoxContainer" parent="Center/Card/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="HeaderBox" type="VBoxContainer" parent="Center/Card/Margin/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 4
+alignment = 1
+
+[node name="TitleLabel" type="Label" parent="Center/Card/Margin/VBox/HeaderBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.88, 0.35, 1)
+theme_override_colors/font_shadow_color = Color(0.1, 0.35, 0.6, 0.8)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/font_size = 32
+text = "★ LEVEL COMPLETE! ★"
+horizontal_alignment = 1
+
+[node name="LevelNameLabel" type="Label" parent="Center/Card/Margin/VBox/HeaderBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.7, 0.88, 1, 0.85)
+theme_override_font_sizes/font_size = 15
+text = "Dia 01 • The floor is lava"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="Center/Card/Margin/VBox"]
+layout_mode = 2
+
+[node name="StatsPanel" type="PanelContainer" parent="Center/Card/Margin/VBox"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_stats_panel")
+
+[node name="Margin" type="MarginContainer" parent="Center/Card/Margin/VBox/StatsPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 16
+
+[node name="Grid" type="VBoxContainer" parent="Center/Card/Margin/VBox/StatsPanel/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="RowTime" type="HBoxContainer" parent="Center/Card/Margin/VBox/StatsPanel/Margin/Grid"]
+layout_mode = 2
+
+[node name="IconAndTitle" type="Label" parent="Center/Card/Margin/VBox/StatsPanel/Margin/Grid/RowTime"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.75, 0.85, 0.98, 0.9)
+theme_override_font_sizes/font_size = 16
+text = "⏱ Tempo da Run:"
+
+[node name="TimeValueLabel" type="Label" parent="Center/Card/Margin/VBox/StatsPanel/Margin/Grid/RowTime"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.4, 0.9, 1, 1)
+theme_override_font_sizes/font_size = 18
+text = "00:14.32"
+horizontal_alignment = 2
+
+[node name="RowAttempts" type="HBoxContainer" parent="Center/Card/Margin/VBox/StatsPanel/Margin/Grid"]
+layout_mode = 2
+
+[node name="IconAndTitle" type="Label" parent="Center/Card/Margin/VBox/StatsPanel/Margin/Grid/RowAttempts"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.75, 0.85, 0.98, 0.9)
+theme_override_font_sizes/font_size = 16
+text = "💀 Tentativas (Attempts):"
+
+[node name="AttemptsBox" type="HBoxContainer" parent="Center/Card/Margin/VBox/StatsPanel/Margin/Grid/RowAttempts"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="AttemptsValueLabel" type="Label" parent="Center/Card/Margin/VBox/StatsPanel/Margin/Grid/RowAttempts/AttemptsBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.6, 0.4, 1)
+theme_override_font_sizes/font_size = 18
+text = "1"
+horizontal_alignment = 2
+
+[node name="RecordBadge" type="Label" parent="Center/Card/Margin/VBox/StatsPanel/Margin/Grid/RowAttempts/AttemptsBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.88, 0.35, 1)
+theme_override_font_sizes/font_size = 12
+text = "✨ NOVO RECORDE!"
+
+[node name="RowJumps" type="HBoxContainer" parent="Center/Card/Margin/VBox/StatsPanel/Margin/Grid"]
+layout_mode = 2
+
+[node name="IconAndTitle" type="Label" parent="Center/Card/Margin/VBox/StatsPanel/Margin/Grid/RowJumps"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.75, 0.85, 0.98, 0.9)
+theme_override_font_sizes/font_size = 16
+text = "🦘 Pulos Realizados:"
+
+[node name="JumpsValueLabel" type="Label" parent="Center/Card/Margin/VBox/StatsPanel/Margin/Grid/RowJumps"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.5, 0.95, 0.6, 1)
+theme_override_font_sizes/font_size = 18
+text = "12"
+horizontal_alignment = 2
+
+[node name="ButtonSpacer" type="Control" parent="Center/Card/Margin/VBox"]
+custom_minimum_size = Vector2(0, 4)
+layout_mode = 2
+
+[node name="ButtonsVBox" type="VBoxContainer" parent="Center/Card/Margin/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="NextButton" type="Button" parent="Center/Card/Margin/VBox/ButtonsVBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 46)
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_btn_primary")
+theme_override_styles/hover = SubResource("StyleBoxFlat_btn_primary_hover")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_btn_disabled")
+text = "PRÓXIMO NÍVEL ▶"
+
+[node name="ButtonsHBox" type="HBoxContainer" parent="Center/Card/Margin/VBox/ButtonsVBox"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="ReplayButton" type="Button" parent="Center/Card/Margin/VBox/ButtonsVBox/ButtonsHBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 42)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 14
+theme_override_styles/normal = SubResource("StyleBoxFlat_btn_secondary")
+theme_override_styles/hover = SubResource("StyleBoxFlat_btn_secondary_hover")
+text = "↺ JOGAR NOVAMENTE"
+
+[node name="LevelSelectButton" type="Button" parent="Center/Card/Margin/VBox/ButtonsVBox/ButtonsHBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 42)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 14
+theme_override_styles/normal = SubResource("StyleBoxFlat_btn_secondary")
+theme_override_styles/hover = SubResource("StyleBoxFlat_btn_secondary_hover")
+text = "☰ SELETOR DE NÍVEIS"

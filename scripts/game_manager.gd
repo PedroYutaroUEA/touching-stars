@@ -11,6 +11,9 @@ var master_volume: float = 1.0
 var music_volume: float = 0.8
 var sfx_volume: float = 0.9
 
+var current_level_num: int = 1
+var current_attempts: int = 1
+
 func _ready() -> void:
 	load_save()
 	apply_all_audio_buses()
@@ -48,8 +51,54 @@ func unlock_level(level_number: int) -> void:
 func is_level_unlocked(level_number: int) -> bool:
 	return level_number <= max_unlocked_level
 
+func start_level_session(level_number: int) -> int:
+	if level_number != current_level_num:
+		current_level_num = level_number
+		current_attempts = 1
+	return current_attempts
+
+func register_death_or_restart() -> void:
+	current_attempts += 1
+
+func reset_session_attempts() -> void:
+	current_attempts = 1
+
+func get_best_attempts(level_number: int) -> int:
+	var config := ConfigFile.new()
+	var err := config.load(SAVE_PATH)
+	if err == OK:
+		return config.get_value("records", "best_attempts_" + str(level_number), -1)
+	return -1
+
+func record_completion(level_number: int) -> Dictionary:
+	unlock_level(level_number + 1)
+
+	var config := ConfigFile.new()
+	config.load(SAVE_PATH)
+	var key := "best_attempts_" + str(level_number)
+	var prev_best: int = config.get_value("records", key, -1)
+	var is_new_best: bool = false
+	var final_best: int = prev_best
+
+	if prev_best == -1 or current_attempts < prev_best:
+		is_new_best = true
+		final_best = current_attempts
+		config.set_value("records", key, final_best)
+		config.save(SAVE_PATH)
+
+	var result := {
+		"attempts": current_attempts,
+		"best_attempts": final_best,
+		"is_new_best": is_new_best
+	}
+	
+	# Prepare session for future attempts
+	current_attempts = 1
+	return result
+
 func reset_progress() -> void:
 	max_unlocked_level = 1
+	current_attempts = 1
 	save_data()
 	progress_updated.emit(max_unlocked_level)
 

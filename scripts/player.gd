@@ -2,6 +2,7 @@ class_name Player
 extends CharacterBody2D
 
 signal player_died
+signal player_jumped
 
 @onready var sprite: Sprite2D = $Visual
 @onready var death_particles: CPUParticles2D = $DeathParticles
@@ -82,6 +83,7 @@ func _physics_process(delta: float) -> void:
 		_jump_buffer_timer = 0.0
 		_coyote_timer = 0.0
 		was_on_ice_when_jumped = is_on_ice
+		player_jumped.emit()
 		if AudioManager:
 			AudioManager.play_jump()
 
@@ -231,4 +233,3 @@ func die() -> void:
 		run_particles.emitting = false
 	sprite.hide()
 	death_particles.emitting = true
-

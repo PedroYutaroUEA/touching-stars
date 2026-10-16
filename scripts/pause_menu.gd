@@ -68,4 +68,4 @@ func _on_menu_pressed() -> void:
 	get_tree().paused = false
 	if AudioManager:
 		AudioManager.play_ui_click()
-	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
+	get_tree().change_scene_to_file("res://scenes/level_select.tscn")

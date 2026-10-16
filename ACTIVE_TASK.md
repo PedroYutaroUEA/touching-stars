@@ -35,3 +35,4 @@
 - [x] GameManager autoload for level progress unlocking and audio persistence (user://save.cfg)
 - [x] Player movement particles (Geometry Dash trail puffs when running + impact burst when landing on platforms)
 - [x] Ambient environment particles (smoothly pulsating static background stars matching level themes, sporadic lava splashes, and ice mist/glitter)
+- [x] Floating Level Complete modal (Geometry Dash style) showing run time, session attempts, personal best attempts persistence, jump counter, and actions: Replay, Next Level, and Level Select
