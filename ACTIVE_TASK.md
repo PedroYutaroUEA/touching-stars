@@ -36,3 +36,13 @@
 - [x] Player movement particles (Geometry Dash trail puffs when running + impact burst when landing on platforms)
 - [x] Ambient environment particles (smoothly pulsating static background stars matching level themes, sporadic lava splashes, and ice mist/glitter)
 - [x] Floating Level Complete modal (Geometry Dash style) showing run time, session attempts, personal best attempts persistence, jump counter, and actions: Replay, Next Level, and Level Select
+
+## Current Phase: Phase 6 - Build, SFX Resources & Export
+### Block 6: Executable Export & Distribution
+- [x] Configure Windows Desktop export preset (`export_presets.cfg`) with custom metadata (ProductName, FileDescription, CompanyName, Version 1.0.0)
+- [x] Design custom high-resolution Touching Stars game icon (`icon.svg`) featuring the green alien character reaching for the golden star
+- [x] Generate multi-size Windows icon file (`icon.ico` with 256, 128, 64, 48, 32, 16 px mipmaps)
+- [x] Embed desktop icon and PE version resources directly into `builds/TouchingStars.exe` using `rcedit`
+- [x] Compile release `.pck` package containing all game assets, scripts, audio, and scenes
+- [x] Package standalone plug-and-play zip distribution (`builds/TouchingStars-v1.0.0-Windows.zip`) for zero-dependency execution
+- [x] Update `.gitignore` with `builds/` to avoid committing large binaries to Git while keeping export artifacts ready for distribution

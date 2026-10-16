@@ -8,6 +8,10 @@ C:.
 |   BOOTSTRAP.md
 |   CONTEXT.md
 |   default_bus_layout.tres
+|   export_presets.cfg
+|   icon.ico
+|   icon.png
+|   icon.png.import
 |   icon.svg
 |   icon.svg.import
 |   PROGRESS.md
