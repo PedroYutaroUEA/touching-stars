@@ -16,6 +16,9 @@ const LEVEL_DATA = [
 ]
 
 func _ready() -> void:
+	if AudioManager:
+		AudioManager.play_menu_music()
+
 	back_btn.pressed.connect(_on_back_pressed)
 	reset_btn.pressed.connect(_on_reset_pressed)
 	

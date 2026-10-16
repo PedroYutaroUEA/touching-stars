@@ -5,8 +5,20 @@
 [node name="AudioManager" type="Node"]
 script = ExtResource("1_audio")
 
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+bus = &"Music"
+
 [node name="JumpSFX" type="AudioStreamPlayer" parent="."]
+bus = &"SFX"
 
 [node name="DeathSFX" type="AudioStreamPlayer" parent="."]
+bus = &"SFX"
 
 [node name="WinSFX" type="AudioStreamPlayer" parent="."]
+bus = &"SFX"
+
+[node name="UIChooseSFX" type="AudioStreamPlayer" parent="."]
+bus = &"SFX"
+
+[node name="UISelectSFX" type="AudioStreamPlayer" parent="."]
+bus = &"SFX"

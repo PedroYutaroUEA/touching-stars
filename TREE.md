@@ -218,7 +218,33 @@ C:.
 |       
 +---audio
 |   +---music
+|   |       level_01.mp3
+|   |       level_01.mp3.import
+|   |       level_02.mp3
+|   |       level_02.mp3.import
+|   |       level_03.mp3
+|   |       level_03.mp3.import
+|   |       level_04.mp3
+|   |       level_04.mp3.import
+|   |       level_05.mp3
+|   |       level_05.mp3.import
+|   |       level_06.mp3
+|   |       level_06.mp3.import
+|   |       menu_loop.mp3
+|   |       menu_loop.mp3.import
+|   |       
 |   \---sfx
+|           choose.mp3
+|           choose.mp3.import
+|           death.mp3
+|           death.mp3.import
+|           jump.mp3
+|           jump.mp3.import
+|           level_complete.wav
+|           level_complete.wav.import
+|           selecting.mp3
+|           selecting.mp3.import
+|           
 +---entities
 |       comet.tscn
 |       hazard.tscn

@@ -46,6 +46,8 @@ func _ready() -> void:
 		_level_num = int(match.get_string(1))
 	if GameManager:
 		GameManager.start_level_session(_level_num)
+	if AudioManager:
+		AudioManager.play_level_music(_level_num)
 
 	_spawn_player()
 	_spawn_comet()
@@ -187,6 +189,8 @@ func _get_level_title() -> String:
 func _go_to_level_select() -> void:
 	if GameManager:
 		GameManager.reset_session_attempts()
+	if AudioManager:
+		AudioManager.play_menu_music()
 	get_tree().change_scene_to_file("res://scenes/level_select.tscn")
 
 func _go_to_next_level() -> void:

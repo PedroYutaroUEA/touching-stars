@@ -38,11 +38,21 @@
 - [x] Floating Level Complete modal (Geometry Dash style) showing run time, session attempts, personal best attempts persistence, jump counter, and actions: Replay, Next Level, and Level Select
 
 ## Current Phase: Phase 6 - Build, SFX Resources & Export
-### Block 6: Executable Export & Distribution
+### Block 6: Audio Integration, SFX Resources & Executable Export
+- [x] Configure dedicated AudioStreamPlayers in `scenes/audio_manager.tscn` routing to `Music` and `SFX` buses
+- [x] Implement music playback with seamless looping in `scripts/audio_manager.gd`:
+  - `menu_loop.mp3` for Main Menu, Pause Menu navigation and Level Selector
+  - `level_01.mp3` through `level_06.mp3` for each respective level
+- [x] Integrate custom SFXs replacing procedural audio:
+  - `jump.mp3` on jump action
+  - `death.mp3` on player hazard death
+  - `choose.mp3` on UI button clicks and confirmations
+  - `selecting.mp3` on button hover and settings test sound
+- [x] Implement level completion audio workflow: stop level music immediately and play `level_complete.wav` on comet touch
 - [x] Configure Windows Desktop export preset (`export_presets.cfg`) with custom metadata (ProductName, FileDescription, CompanyName, Version 1.0.0)
 - [x] Design custom high-resolution Touching Stars game icon (`icon.svg`) featuring the green alien character reaching for the golden star
 - [x] Generate multi-size Windows icon file (`icon.ico` with 256, 128, 64, 48, 32, 16 px mipmaps)
 - [x] Embed desktop icon and PE version resources directly into `builds/TouchingStars.exe` using `rcedit`
-- [x] Compile release `.pck` package containing all game assets, scripts, audio, and scenes
+- [x] Compile release `.pck` package containing all game assets, scripts, audio, and scenes (13.3 MB)
 - [x] Package standalone plug-and-play zip distribution (`builds/TouchingStars-v1.0.0-Windows.zip`) for zero-dependency execution
 - [x] Update `.gitignore` with `builds/` to avoid committing large binaries to Git while keeping export artifacts ready for distribution

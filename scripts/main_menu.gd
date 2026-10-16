@@ -10,6 +10,9 @@ extends Control
 @onready var controls_modal: ControlsModal = %ControlsModal
 
 func _ready() -> void:
+	if AudioManager:
+		AudioManager.play_menu_music()
+
 	if settings_menu:
 		settings_menu.hide()
 		settings_menu.closed.connect(_on_settings_closed)
