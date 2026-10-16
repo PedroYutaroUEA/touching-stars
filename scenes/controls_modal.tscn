@@ -1,0 +1,311 @@
+[gd_scene format=3 uid="uid://controls_modal_scene"]
+
+[ext_resource type="Script" path="res://scripts/controls_modal.gd" id="1_script"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_panel"]
+bg_color = Color(0.07, 0.08, 0.14, 0.96)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.35, 0.75, 1, 0.85)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
+shadow_color = Color(0, 0, 0, 0.6)
+shadow_size = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_key"]
+bg_color = Color(0.16, 0.22, 0.35, 0.95)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 2
+border_color = Color(0.4, 0.85, 1, 0.8)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btn"]
+bg_color = Color(0.14, 0.42, 0.7, 0.9)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.5, 0.9, 1, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btn_hover"]
+bg_color = Color(0.2, 0.55, 0.9, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.8, 0.95, 1, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="ControlsModal" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_script")
+
+[node name="BackgroundDim" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.02, 0.02, 0.05, 0.75)
+
+[node name="Center" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Card" type="PanelContainer" parent="Center"]
+custom_minimum_size = Vector2(560, 480)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
+
+[node name="Margin" type="MarginContainer" parent="Center/Card"]
+layout_mode = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 26
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 24
+
+[node name="VBox" type="VBoxContainer" parent="Center/Card/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Title" type="Label" parent="Center/Card/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.88, 0.35, 1)
+theme_override_font_sizes/font_size = 26
+text = "🎮 CONTROLES & COMO JOGAR"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="Center/Card/Margin/VBox"]
+layout_mode = 2
+
+[node name="RowMove" type="HBoxContainer" parent="Center/Card/Margin/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="Keys" type="HBoxContainer" parent="Center/Card/Margin/VBox/RowMove"]
+custom_minimum_size = Vector2(170, 0)
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="KeyA" type="Label" parent="Center/Card/Margin/VBox/RowMove/Keys"]
+custom_minimum_size = Vector2(34, 32)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.5, 0.9, 1, 1)
+theme_override_font_sizes/font_size = 15
+theme_override_styles/normal = SubResource("StyleBoxFlat_key")
+text = "A"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="KeyD" type="Label" parent="Center/Card/Margin/VBox/RowMove/Keys"]
+custom_minimum_size = Vector2(34, 32)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.5, 0.9, 1, 1)
+theme_override_font_sizes/font_size = 15
+theme_override_styles/normal = SubResource("StyleBoxFlat_key")
+text = "D"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Or" type="Label" parent="Center/Card/Margin/VBox/RowMove/Keys"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.6, 0.7, 0.8, 1)
+theme_override_font_sizes/font_size = 13
+text = "ou"
+
+[node name="KeyLeft" type="Label" parent="Center/Card/Margin/VBox/RowMove/Keys"]
+custom_minimum_size = Vector2(34, 32)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.5, 0.9, 1, 1)
+theme_override_font_sizes/font_size = 15
+theme_override_styles/normal = SubResource("StyleBoxFlat_key")
+text = "◄"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="KeyRight" type="Label" parent="Center/Card/Margin/VBox/RowMove/Keys"]
+custom_minimum_size = Vector2(34, 32)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.5, 0.9, 1, 1)
+theme_override_font_sizes/font_size = 15
+theme_override_styles/normal = SubResource("StyleBoxFlat_key")
+text = "►"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Desc" type="Label" parent="Center/Card/Margin/VBox/RowMove"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.9, 0.95, 1, 1)
+theme_override_font_sizes/font_size = 15
+text = "Mover para Esquerda / Direita"
+vertical_alignment = 1
+
+[node name="RowJump" type="HBoxContainer" parent="Center/Card/Margin/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="Keys" type="HBoxContainer" parent="Center/Card/Margin/VBox/RowJump"]
+custom_minimum_size = Vector2(170, 0)
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="KeyW" type="Label" parent="Center/Card/Margin/VBox/RowJump/Keys"]
+custom_minimum_size = Vector2(34, 32)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.5, 0.9, 1, 1)
+theme_override_font_sizes/font_size = 15
+theme_override_styles/normal = SubResource("StyleBoxFlat_key")
+text = "W"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="KeySpace" type="Label" parent="Center/Card/Margin/VBox/RowJump/Keys"]
+custom_minimum_size = Vector2(62, 32)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.5, 0.9, 1, 1)
+theme_override_font_sizes/font_size = 13
+theme_override_styles/normal = SubResource("StyleBoxFlat_key")
+text = "Espaço"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="KeyUp" type="Label" parent="Center/Card/Margin/VBox/RowJump/Keys"]
+custom_minimum_size = Vector2(34, 32)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.5, 0.9, 1, 1)
+theme_override_font_sizes/font_size = 15
+theme_override_styles/normal = SubResource("StyleBoxFlat_key")
+text = "▲"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Desc" type="Label" parent="Center/Card/Margin/VBox/RowJump"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.9, 0.95, 1, 1)
+theme_override_font_sizes/font_size = 15
+text = "Pular (Solte rápido para pulo curto)"
+vertical_alignment = 1
+
+[node name="RowRestart" type="HBoxContainer" parent="Center/Card/Margin/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="Keys" type="HBoxContainer" parent="Center/Card/Margin/VBox/RowRestart"]
+custom_minimum_size = Vector2(170, 0)
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="KeyR" type="Label" parent="Center/Card/Margin/VBox/RowRestart/Keys"]
+custom_minimum_size = Vector2(34, 32)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.5, 0.9, 1, 1)
+theme_override_font_sizes/font_size = 15
+theme_override_styles/normal = SubResource("StyleBoxFlat_key")
+text = "R"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Desc" type="Label" parent="Center/Card/Margin/VBox/RowRestart"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.9, 0.95, 1, 1)
+theme_override_font_sizes/font_size = 15
+text = "Reiniciar o Nível Instantaneamente"
+vertical_alignment = 1
+
+[node name="RowPause" type="HBoxContainer" parent="Center/Card/Margin/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="Keys" type="HBoxContainer" parent="Center/Card/Margin/VBox/RowPause"]
+custom_minimum_size = Vector2(170, 0)
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="KeyEsc" type="Label" parent="Center/Card/Margin/VBox/RowPause/Keys"]
+custom_minimum_size = Vector2(46, 32)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.5, 0.9, 1, 1)
+theme_override_font_sizes/font_size = 14
+theme_override_styles/normal = SubResource("StyleBoxFlat_key")
+text = "Esc"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Desc" type="Label" parent="Center/Card/Margin/VBox/RowPause"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.9, 0.95, 1, 1)
+theme_override_font_sizes/font_size = 15
+text = "Pausar o Jogo / Configurar Áudio"
+vertical_alignment = 1
+
+[node name="RowGoal" type="HBoxContainer" parent="Center/Card/Margin/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="Keys" type="HBoxContainer" parent="Center/Card/Margin/VBox/RowGoal"]
+custom_minimum_size = Vector2(170, 0)
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="KeyStar" type="Label" parent="Center/Card/Margin/VBox/RowGoal/Keys"]
+custom_minimum_size = Vector2(90, 32)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.88, 0.35, 1)
+theme_override_font_sizes/font_size = 14
+theme_override_styles/normal = SubResource("StyleBoxFlat_key")
+text = "★ Cometa"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Desc" type="Label" parent="Center/Card/Margin/VBox/RowGoal"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.9, 0.95, 1, 1)
+theme_override_font_sizes/font_size = 15
+text = "Toque na estrela para vencer o dia!"
+vertical_alignment = 1
+
+[node name="Spacer" type="Control" parent="Center/Card/Margin/VBox"]
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+
+[node name="CloseButton" type="Button" parent="Center/Card/Margin/VBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(180, 42)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_btn")
+theme_override_styles/hover = SubResource("StyleBoxFlat_btn_hover")
+text = "Entendido!"

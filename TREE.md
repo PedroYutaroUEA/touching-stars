@@ -224,6 +224,8 @@ C:.
 +---scenes
 |       audio_manager.tscn
 |       base_level.tscn
+|       controls_hint.tscn
+|       controls_modal.tscn
 |       game.tscn
 |       level_01.tscn
 |       level_02.tscn
@@ -243,6 +245,7 @@ C:.
 |       base_level.gd.uid
 |       comet.gd
 |       comet.gd.uid
+|       controls_modal.gd
 |       game_manager.gd
 |       game_manager.gd.uid
 |       hazard.gd
@@ -281,23 +284,27 @@ C:.
     |       comet.svg
     |       comet.svg.import
     |       
-    \---tilesets
-            tileset_base.svg
-            tileset_base.svg.import
-            tileset_broken-station-block.svg
-            tileset_broken-station-block.svg.import
-            tileset_broken-station-corner.svg
-            tileset_broken-station-corner.svg.import
-            tileset_broken-station-filling.svg
-            tileset_broken-station-filling.svg.import
-            tileset_broken-station-outter.svg
-            tileset_broken-station-outter.svg.import
-            tileset_ice.svg
-            tileset_ice.svg.import
-            tileset_lava.svg
-            tileset_lava.svg.import
-            tileset_moon.svg
-            tileset_moon.svg.import
-            tileset_spike.svg
-            tileset_spike.svg.import
+    +---tilesets
+    |       tileset_base.svg
+    |       tileset_base.svg.import
+    |       tileset_broken-station-block.svg
+    |       tileset_broken-station-block.svg.import
+    |       tileset_broken-station-corner.svg
+    |       tileset_broken-station-corner.svg.import
+    |       tileset_broken-station-filling.svg
+    |       tileset_broken-station-filling.svg.import
+    |       tileset_broken-station-outter.svg
+    |       tileset_broken-station-outter.svg.import
+    |       tileset_ice.svg
+    |       tileset_ice.svg.import
+    |       tileset_lava.svg
+    |       tileset_lava.svg.import
+    |       tileset_moon.svg
+    |       tileset_moon.svg.import
+    |       tileset_spike.svg
+    |       tileset_spike.svg.import
+    |       
+    \---ui
+            icon_github.svg
+            icon_help.svg
             

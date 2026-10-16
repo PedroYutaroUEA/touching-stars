@@ -27,6 +27,8 @@
 ## Current Phase: Phase 5 - Presentation, Game Screens Workflow & Polish
 ### Block 5: Game Screens & Navigation
 - [x] Startpage (Main Menu) with options: JOGAR (Start), CONFIGURAÇÕES (Settings), SAIR (Exit)
+- [x] Helper & GitHub round buttons on Main Menu with controls modal dialog and link to GitHub profile
+- [x] In-game visual and descriptive floating controls tutorial in Level 01
 - [x] Simple unlockable Level Selector (Alien Escape trail style) with connected path, locks, and Back button
 - [x] Settings Menu with Godot Audio Buses (Master, Music, SFX), interactive volume sliders and test sound
 - [x] Translucent Pause Menu window (triggered by Esc) with Resume, Restart, Settings, and Main Menu options
