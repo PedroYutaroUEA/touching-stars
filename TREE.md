@@ -268,6 +268,7 @@ C:.
 |       main_menu.tscn
 |       pause_menu.tscn
 |       settings_menu.tscn
+|       spawn_info.tscn
 |       
 +---scripts
 |       audio_manager.gd
@@ -307,6 +308,7 @@ C:.
 |       player.gd.uid
 |       settings_menu.gd
 |       settings_menu.gd.uid
+|       spawn_info.gd
 |       
 \---sprites
     +---player

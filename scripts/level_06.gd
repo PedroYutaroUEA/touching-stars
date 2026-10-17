@@ -47,9 +47,11 @@ func _build_saturn_descent() -> void:
 	_set_spike_up(layer, 12, 9)
 	_build_divider(layer, 2, 14, 10)
 	
-	_build_divider(layer, 17, 18, 10)
+	_build_divider(layer, 17, 19, 10)
+	_set_spike_right(layer, 20, 11)
 	
-	_build_divider(layer, 24, 30, 10)
+	_set_spike_left(layer, 22, 10)
+	_build_divider(layer, 23, 30, 10)
 	_set_spike_down(layer, 25, 8)
 	
 	_set_spike_down(layer, 28, 8)
@@ -79,7 +81,7 @@ func _build_saturn_descent() -> void:
 
 	# Spawn Safe Base: X = 2..8, Y = 8
 	_build_platform_composite(layer, 3, 8, 7)
-	#_set_spike_right(layer, 9, 7)
+	_set_spike_right(layer, 2, 6)
 
 	# Platform 1: X = 13..18, Y = 8
 	_set_spike_left(layer, 12, 7)
@@ -150,8 +152,10 @@ func _build_saturn_descent() -> void:
 	# Platform 3: X = 20..26, Y = 18
 	_set_spike_right(layer, 27, 18)
 	_build_platform_composite(layer, 21, 26, 18)
-	_set_spike_up(layer, 21, 17)
+	_set_spike_up(layer, 22, 17)
+	_set_spike_up(layer, 23, 17)
 	_set_spike_up(layer, 24, 17)
+	_set_spike_up(layer, 26, 17)
 	_set_spike_left(layer, 20, 18)
 
 	# Platform 4 (Lead-in to Shaft 2): X = 11..14, Y = 18
@@ -183,6 +187,7 @@ func _build_saturn_descent() -> void:
 
 	# Landing Base from Shaft 2: X = 4..13, Y = 28
 	_build_platform_composite(layer, 4, 13, 28)
+	_build_platform_composite(layer, 4, 13, 29)
 	for x in range(5, 11):
 		_set_spike_up(layer, x, 27)
 	_set_spike_right(layer, 14, 28)
@@ -194,6 +199,7 @@ func _build_saturn_descent() -> void:
 	# Platform 1: X = 19..25, Y = 28
 	_set_spike_left(layer, 18, 28)
 	_build_platform_composite(layer, 19, 25, 28)
+	_build_platform_composite(layer, 19, 25, 29)
 	_set_spike_up(layer, 21, 27)
 	_set_spike_up(layer, 22, 27)
 	_set_spike_up(layer, 23, 27)
@@ -202,10 +208,12 @@ func _build_saturn_descent() -> void:
 	_build_platform_composite(layer, 28, 28, 26)
 	_build_platform_composite(layer, 29, 29, 27)
 	_build_platform_composite(layer, 28, 28, 28)
+	_build_platform_composite(layer, 29, 29, 29)
 
 	# Platform 2: X = 32..38, Y = 28
 	_set_spike_left(layer, 31, 28)
 	_build_platform_composite(layer, 32, 38, 28)
+	_build_platform_composite(layer, 32, 38, 29)
 	_set_spike_up(layer, 32, 27)
 	_set_spike_up(layer, 34, 27)
 	_set_spike_up(layer, 36, 27)
@@ -215,10 +223,12 @@ func _build_saturn_descent() -> void:
 	_build_platform_composite(layer, 42, 42, 26)
 	_build_platform_composite(layer, 41, 41, 27)
 	_build_platform_composite(layer, 42, 42, 28)
+	_build_platform_composite(layer, 41, 41, 29)
 
 	# Platform 3: X = 45..51, Y = 28
 	_set_spike_left(layer, 44, 28)
 	_build_platform_composite(layer, 45, 51, 28)
+	_build_platform_composite(layer, 45, 51, 29)
 	_set_spike_up(layer, 46, 27)
 	_set_spike_up(layer, 48, 27)
 	_set_spike_up(layer, 50, 27)
@@ -233,6 +243,7 @@ func _build_saturn_descent() -> void:
 	
 	# Platform 4 (Lead-in to Shaft 3): X = 58..68, Y = 28
 	_build_platform_composite(layer, 58, 68, 28)
+	_build_platform_composite(layer, 58, 68, 29)
 	_set_spike_up(layer, 59, 27)
 	_set_spike_up(layer, 61, 27)
 	
@@ -258,8 +269,8 @@ func _build_saturn_descent() -> void:
 	_build_platform_composite(layer, 65, 76, 40)
 
 	# Stepping Platform 1: X = 50..56, Y = 40
-	_set_spike_right(layer, 57, 40)
-	_build_platform_composite(layer, 48, 56, 40)
+	_set_spike_right(layer, 58, 40)
+	_build_platform_composite(layer, 48, 57, 40)
 	_set_spike_up(layer, 48, 39)
 	_set_spike_up(layer, 51, 39)
 

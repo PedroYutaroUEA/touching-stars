@@ -136,11 +136,9 @@ func _build_spike_maze() -> void:
 	_build_platform_composite(layer, 70, 72, 35)
 	_build_platform_composite(layer, 73, 75, 32)
 	_build_platform_composite(layer, 70, 72, 29)
-	_set_spike_down(layer, 70, 30)
-	_set_spike_down(layer, 72, 30)
+	_set_spike_down(layer, 71, 30)
 	_build_platform_composite(layer, 73, 75, 26)
-	_set_spike_down(layer, 73, 27)
-	_set_spike_down(layer, 75, 27)
+	_set_spike_down(layer, 74, 27)
 
 	# =========================================================================
 	# 5. FLOOR 2: The "Zipper" (Sobe e Desce Apertado, Y = 25..33, Moving R -> L)

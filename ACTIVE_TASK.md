@@ -56,3 +56,4 @@
 - [x] Compile release `.pck` package containing all game assets, scripts, audio, and scenes (13.3 MB)
 - [x] Package standalone plug-and-play zip distribution (`builds/TouchingStars-v1.0.0-Windows.zip`) for zero-dependency execution
 - [x] Update `.gitignore` with `builds/` to avoid committing large binaries to Git while keeping export artifacts ready for distribution
+- [x] In-world Geometry Dash style Attempt counter and real-time elapsed run timer banner (`scenes/spawn_info.tscn`, `scripts/spawn_info.gd`) floating above player spawn and landing platform (with custom override in Level 02)

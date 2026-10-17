@@ -3,6 +3,7 @@ extends BaseLevel
 
 func _ready() -> void:
 	level_theme_color = Color(0.75, 0.88, 1.0, 1.0)
+	spawn_info_override_position = Vector2(96, 616)
 	super._ready()
 	_build_terrain()
 
@@ -30,8 +31,11 @@ func _build_terrain() -> void:
 		# Bottom row of upside down spikes
 		layer.set_cell(Vector2i(x, 34), 6, Vector2i(0, 0), 1)
 		# Giant column
-		for y in range(14, 34):
-			layer.set_cell(Vector2i(x, y), 4, Vector2i(0, 0))
+		for y in range(4, 34):
+			if y <= 25 or y >= 29:
+				layer.set_cell(Vector2i(x, y), 4, Vector2i(0, 0))
+			elif x % 2 != 0:
+				layer.set_cell(Vector2i(x, 28), 6, Vector2i(0, 0), 0)
 		
 	
 	# Lava floor (Source 5)

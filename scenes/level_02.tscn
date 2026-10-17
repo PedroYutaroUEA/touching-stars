@@ -9,7 +9,7 @@ script = ExtResource("2_script")
 level_gravity_multiplier = 0.55
 
 [node name="SpawnPoint" parent="." index="1" unique_id=1692913305]
-position = Vector2(96, 600)
+position = Vector2(90, 300)
 
 [node name="CometPoint" parent="." index="2" unique_id=1830228768]
 position = Vector2(1184, 450)
@@ -19,5 +19,5 @@ position = Vector2(640, 704)
 scale = Vector2(200, 5)
 
 [node name="SpikesHitbox" parent="." index="7" unique_id=987654321 instance=ExtResource("3_hazard")]
-position = Vector2(832, 552)
+position = Vector2(900, 552)
 scale = Vector2(12, 1)

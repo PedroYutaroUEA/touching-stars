@@ -11,9 +11,11 @@ extends Node2D
 
 @export_group("Level Info")
 @export var level_title: String = ""
+@export var spawn_info_override_position: Vector2 = Vector2.ZERO
 
 @onready var spawn_point: Marker2D = $SpawnPoint
 @onready var comet_point: Marker2D = $CometPoint
+@onready var spawn_info: SpawnInfo = get_node_or_null("SpawnInfo") as SpawnInfo
 @onready var ui_layer: CanvasLayer = $UILayer
 @onready var level_clear_label: Label = $UILayer/LevelClearLabel
 @onready var background_stars: CPUParticles2D = $BackgroundLayer/BackgroundStars
@@ -50,6 +52,7 @@ func _ready() -> void:
 		AudioManager.play_level_music(_level_num)
 
 	_spawn_player()
+	_setup_spawn_info()
 	_spawn_comet()
 	_setup_pause_menu()
 	_setup_level_complete_modal()
@@ -111,6 +114,20 @@ func _spawn_player() -> void:
 	_player_instance.player_jumped.connect(_on_player_jumped)
 	add_child(_player_instance)
 
+func _setup_spawn_info() -> void:
+	if not spawn_info:
+		return
+	if spawn_info_override_position != Vector2.ZERO:
+		spawn_info.position = spawn_info_override_position
+	elif spawn_point:
+		spawn_info.position = Vector2(spawn_point.position.x, spawn_point.position.y - 48.0)
+
+	var attempts: int = 1
+	if GameManager:
+		attempts = GameManager.current_attempts
+	spawn_info.set_attempt(attempts)
+	spawn_info.update_time(_run_time)
+
 func _on_player_jumped() -> void:
 	if not _level_cleared:
 		_jumps_count += 1
@@ -118,6 +135,8 @@ func _on_player_jumped() -> void:
 func _process(delta: float) -> void:
 	if not _level_cleared:
 		_run_time += delta
+		if spawn_info:
+			spawn_info.update_time(_run_time)
 		# Manual instant restart
 		if Input.is_action_just_pressed("restart_level"):
 			if GameManager:

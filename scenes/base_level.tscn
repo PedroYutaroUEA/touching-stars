@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://c1hqwq0t6u1pk" path="res://sprites/tilesets/tileset_broken-station-outter.svg" id="station_outter_tex"]
 [ext_resource type="Texture2D" uid="uid://424c48fcxovc" path="res://sprites/tilesets/tileset_broken-station-corner.svg" id="station_corner_tex"]
 [ext_resource type="Texture2D" uid="uid://c70wilxn4fal1" path="res://sprites/tilesets/tileset_broken-station-filling.svg" id="station_filling_tex"]
+[ext_resource type="PackedScene" uid="uid://spawn_info_banner" path="res://scenes/spawn_info.tscn" id="13_spawn_info"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0n1tn"]
 texture = ExtResource("2_dbkse")
@@ -282,6 +283,8 @@ tile_set = SubResource("TileSet_a8ku5")
 
 [node name="SpawnPoint" type="Marker2D" parent="." unique_id=1692913305]
 position = Vector2(640, 360)
+
+[node name="SpawnInfo" parent="." instance=ExtResource("13_spawn_info")]
 
 [node name="CometPoint" type="Marker2D" parent="." unique_id=1830228768]
 position = Vector2(800, 360)
