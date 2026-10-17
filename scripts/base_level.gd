@@ -11,7 +11,15 @@ extends Node2D
 
 @export_group("Level Info")
 @export var level_title: String = ""
-@export var spawn_info_override_position: Vector2 = Vector2.ZERO
+
+@export_group("Spawn Info Customization")
+@export var show_spawn_info: bool = true
+@export var spawn_info_offset: Vector2 = Vector2(0, -32)
+@export var spawn_info_position_override: Vector2 = Vector2.ZERO
+@export var spawn_info_scale: float = 1.0
+@export var spawn_info_attempt_font_size: int = 12
+@export var spawn_info_time_font_size: int = 10
+@export var spawn_info_has_background: bool = true
 
 @onready var spawn_point: Marker2D = $SpawnPoint
 @onready var comet_point: Marker2D = $CometPoint
@@ -114,19 +122,56 @@ func _spawn_player() -> void:
 	_player_instance.player_jumped.connect(_on_player_jumped)
 	add_child(_player_instance)
 
+func configure_spawn_info(
+	pos: Vector2 = Vector2.ZERO,
+	attempt_size: int = 12,
+	time_size: int = 10,
+	scale_val: float = 1.0,
+	has_bg: bool = true
+) -> void:
+	if pos != Vector2.ZERO:
+		spawn_info_position_override = pos
+	spawn_info_attempt_font_size = attempt_size
+	spawn_info_time_font_size = time_size
+	spawn_info_scale = scale_val
+	spawn_info_has_background = has_bg
+	if spawn_info:
+		_apply_spawn_info_config()
+
 func _setup_spawn_info() -> void:
 	if not spawn_info:
 		return
-	if spawn_info_override_position != Vector2.ZERO:
-		spawn_info.position = spawn_info_override_position
-	elif spawn_point:
-		spawn_info.position = Vector2(spawn_point.position.x, spawn_point.position.y - 48.0)
+	if not show_spawn_info:
+		spawn_info.hide()
+		return
+	
+	spawn_info.show()
+	_apply_spawn_info_config()
 
 	var attempts: int = 1
 	if GameManager:
 		attempts = GameManager.current_attempts
 	spawn_info.set_attempt(attempts)
 	spawn_info.update_time(_run_time)
+
+func _apply_spawn_info_config() -> void:
+	if not spawn_info:
+		return
+	var target_pos: Vector2
+	if spawn_info_position_override != Vector2.ZERO:
+		target_pos = spawn_info_position_override
+	elif spawn_point:
+		target_pos = spawn_point.position + spawn_info_offset
+	else:
+		target_pos = Vector2(640, 360)
+
+	spawn_info.configure(
+		target_pos,
+		spawn_info_attempt_font_size,
+		spawn_info_time_font_size,
+		spawn_info_scale,
+		spawn_info_has_background
+	)
 
 func _on_player_jumped() -> void:
 	if not _level_cleared:

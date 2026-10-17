@@ -10,7 +10,7 @@ script = ExtResource("2_script")
 [node name="SpawnPoint" parent="." index="1" unique_id=1692913305]
 position = Vector2(72, 640)
 
-[node name="CometPoint" parent="." index="2" unique_id=1830228768]
+[node name="CometPoint" parent="." index="3" unique_id=1830228768]
 position = Vector2(130, 105)
 
 [node name="LavaFloor" parent="." index="6" unique_id=1294824361 instance=ExtResource("3_hazard")]

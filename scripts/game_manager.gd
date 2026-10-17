@@ -15,8 +15,24 @@ var current_level_num: int = 1
 var current_attempts: int = 1
 
 func _ready() -> void:
+	DisplayServer.window_set_title("Touching Stars")
+	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN)
+	DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED)
+	
 	load_save()
 	apply_all_audio_buses()
+
+func _input(event: InputEvent) -> void:
+	if event is InputEventKey and event.pressed and not event.echo:
+		if event.keycode == KEY_F11:
+			toggle_fullscreen()
+
+func toggle_fullscreen() -> void:
+	var current_mode := DisplayServer.window_get_mode()
+	if current_mode == DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN or current_mode == DisplayServer.WINDOW_MODE_FULLSCREEN:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+	else:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN)
 
 func load_save() -> void:
 	var config := ConfigFile.new()

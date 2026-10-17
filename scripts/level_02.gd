@@ -3,8 +3,9 @@ extends BaseLevel
 
 func _ready() -> void:
 	level_theme_color = Color(0.75, 0.88, 1.0, 1.0)
-	spawn_info_override_position = Vector2(96, 616)
 	super._ready()
+	# Na Fase 2, o banner fica acima da plataforma onde o jogador pousa após a queda
+	configure_spawn_info(Vector2(96, 600), 14, 14, 1.25, true)
 	_build_terrain()
 
 func _build_terrain() -> void:

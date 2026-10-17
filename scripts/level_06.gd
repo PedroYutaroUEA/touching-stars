@@ -9,6 +9,8 @@ const TRANSPOSE = 1 << 14
 func _ready() -> void:
 	level_theme_color = Color(1.0, 0.78, 0.3, 1.0)
 	super._ready()
+	# Customização do banner de spawn (ajustado para a área livre entre a borda superior e o spawn do jogador)
+	configure_spawn_info(Vector2(90, 82), 12, 12, 1, true)
 	_build_saturn_descent()
 
 func _build_saturn_descent() -> void:

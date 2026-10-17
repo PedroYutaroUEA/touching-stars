@@ -11,6 +11,8 @@ const TRANSPOSE = 1 << 14
 func _ready() -> void:
 	level_theme_color = Color(0.25, 0.75, 1.0, 1.0)
 	super._ready()
+	# Customização do banner de spawn (espaçamento perfeito entre o teto de espinhos e o player)
+	configure_spawn_info(Vector2(75, 605), 12, 12, 1, true)
 	_build_spike_maze()
 
 func _build_spike_maze() -> void:

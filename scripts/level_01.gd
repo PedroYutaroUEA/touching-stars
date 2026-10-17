@@ -4,6 +4,8 @@ extends BaseLevel
 func _ready() -> void:
 	level_theme_color = Color(1.0, 0.55, 0.2, 1.0)
 	super._ready()
+	# Customização do banner de spawn (posição, tam. fonte attempt, tam. fonte tempo, escala, fundo)
+	configure_spawn_info(Vector2(112, 475), 12, 12, 1.2, true)
 	_build_pillars()
 	_build_lava()
 
